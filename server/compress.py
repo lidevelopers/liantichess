@@ -18,6 +18,7 @@ V2C = {
     "racingkings": "F",
     "antichess": "f",
     "horde": "H",
+    "threecheck": "V",
     "makruk": "m",
     "placement": "p",
     "seirawan": "s",
