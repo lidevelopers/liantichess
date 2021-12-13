@@ -292,6 +292,15 @@ export const VARIANTS: { [name: string]: Variant } = {
             icon: "🏳️",
           }),
     
+    horde: new Variant({
+            name: "horde", tooltip: () => _("Horde Chess."),
+            startFen: "rnbqkbnr/pppppppp/8/1PP2PP1/PPPPPPPP/PPPPPPPP/PPPPPPPP/PPPPPPPP w kq - 0 1",
+            board: "standard8x8", piece: "standard",
+            pieceRoles: ["k", "q", "r", "b", "n", "p"],
+            enPassant: true,
+            icon: "♟",
+          }),  
+    
     antichess: new Variant({
       name: "antichess", tooltip: () => _("capture all pieces."),
       startFen: "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w - - 0 1",
@@ -299,7 +308,16 @@ export const VARIANTS: { [name: string]: Variant } = {
       pieceRoles: ["k", "q", "r", "b", "n", "p"],
       enPassant: true,
       icon: "♔",
-    }),  
+    }),
+    
+    racingkings: new Variant({
+      name: "racingkings", tooltip: () => _("Bring your king to other side."),
+      startFen: "8/8/8/8/8/8/krbnNBRK/qrbnNBRQ w - - 0 1",
+      board: "standard8x8", piece: "standard",
+      pieceRoles: ["k", "q", "r", "b", "n", "p"],
+      enPassant: true,
+      icon: "♔",
+    }),
 
     makruk: new Variant({
         name: "makruk", tooltip: () => _("Thai Chess. A game closely resembling the original Chaturanga. Similar to Chess but with a different queen and bishop."),
@@ -734,7 +752,7 @@ const disabledVariants = [ "gothic", "gothhouse", "embassy" ];
 export const enabledVariants = variants.filter(v => !disabledVariants.includes(v));
 
 const variantGroups: { [ key: string ]: { variants: string[] } } = {
-    standard: { variants: [ "chess", "crazyhouse", "placement", "atomic", "kingofthehill", "antichess" ] },
+    standard: { variants: [ "chess", "crazyhouse", "placement", "atomic", "kingofthehill", "antichess", "horde", "racingkings" ] },
     sea:      { variants: [ "makruk", "makpong", "cambodian", "sittuyin", "asean" ] },
     shogi:    { variants: [ "shogi", "minishogi", "kyotoshogi", "dobutsu", "gorogoro", "torishogi" ] },
     xiangqi:  { variants: [ "xiangqi", "manchu", "janggi", "minixiangqi" ] },
