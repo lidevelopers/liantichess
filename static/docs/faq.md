@@ -65,7 +65,5 @@ No! That is done via OAuth and your password isn't revealed to Pychess, just lik
 
 You can try the lobby chat, although the developers might not be on to answer. More reliably, we use [Discord](https://discord.gg/S3JmrXtsF2).</details>
 
-You sure can! Pychess is open source. Please communicate your suggestions by Github or [Discord](https://discord.gg/S3JmrXtsF2) </details>
-
 
 

@@ -6,7 +6,7 @@ import { model } from './main';
 
 export function aboutView(): VNode[] {
     const untitled = [
-        _("\"Many Thanks to gbtami and pychess developers to derive this project."),
+        _("\Many Thanks to gbtami and pychess developers to derive this project."),
     ]
     return [
         h('div.about', [
