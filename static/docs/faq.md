@@ -1,6 +1,6 @@
 # Frequently Asked Questions
 
-## Pychess
+## Liantichess
 
 <details><summary>What is Liantichess?</summary>
 
