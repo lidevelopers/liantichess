@@ -1148,7 +1148,7 @@ table#seeks-header, table#seeks {
     box-shadow: var(--base-shadow);
     background-size: cover;
     background-position: center;
-    background-image: url('images/Background2.svg');
+    background-image: url('images/seek-bg.svg');
     background-color: var(--bg-seek);
     background-blend-mode: overlay;
 }
