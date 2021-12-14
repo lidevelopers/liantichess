@@ -487,49 +487,84 @@ export class LobbyController {
                     ]),
                 ]),
             ]),
-            h('button.lobby-button', {
-                on: {
-                    click: () => {
-                        this.challengeAI = false;
-                        this.inviteFriend = false;
-                        document.getElementById('game-mode')!.style.display = anon ? 'none' : 'inline-flex';
-                        document.getElementById('challenge-block')!.style.display = 'none';
-                        document.getElementById('ailevel')!.style.display = 'none';
-                        document.getElementById('id01')!.style.display = 'block';
-                    }
-                }
-            },
-                _("Create a game")
-            ),
-            h('button.lobby-button', {
-                on: {
-                    click: () => {
-                        this.challengeAI = false;
-                        this.inviteFriend = true;
-                        document.getElementById('game-mode')!.style.display = anon ? 'none' : 'inline-flex';
-                        document.getElementById('challenge-block')!.style.display = 'none';
-                        document.getElementById('ailevel')!.style.display = 'none';
-                        document.getElementById('id01')!.style.display = 'block';
-                    }
-                }
-            },
-                _("Play with a friend")
-            ),
-            h('button.lobby-button', {
-                on: {
-                    click: () => {
-                        this.challengeAI = true;
-                        this.inviteFriend = false;
-                        document.getElementById('game-mode')!.style.display = (anon) ? 'none' : 'inline-flex';
-                        document.getElementById('challenge-block')!.style.display = 'none';
-                        document.getElementById('ailevel')!.style.display = 'inline-block';
-                        document.getElementById('id01')!.style.display = 'block';
-                    }
-                }
-            }, _("Play with AI (Fairy-Stockfish)")),
+            h('button.lobby-button', { on: { click: () => this.createGame() } }, _("Create a game")),
+            h('button.lobby-button', { on: { click: () => this.playFriend() } }, _("Play with a friend")),
+            h('button.lobby-button', { on: { click: () => this.playAI() } }, _("Play with AI")),
+            h('button.lobby-button', { on: { click: () => this.playRM() } }, _("Practice with Random-Mover")),
+            h('button.lobby-button', { on: { click: () => this.createHost() }, style: { display: this.model["tournamentDirector"] ? "block" : "none" } }, _("Host a game for others")),
         ];
     }
 
+    preSelectVariant(variantName: string, chess960: boolean=false) {
+        if (variantName !== '') {
+            const select = document.getElementById("variant") as HTMLSelectElement;
+            const options = Array.from(select.options).map(o => o.value);
+            if (select) select.selectedIndex = options.indexOf(variantName);
+
+            this.setVariant();
+
+            const check = document.getElementById("chess960") as HTMLInputElement;
+            if (check) check.checked = chess960;
+        }
+    }
+
+    createGame(variantName: string = '', chess960: boolean = false) {
+        this.preSelectVariant(variantName, chess960);
+        const anon = this.model.anon === 'True';
+        this.createMode = 'createGame';
+        document.getElementById('game-mode')!.style.display = anon ? 'none' : 'inline-flex';
+        document.getElementById('challenge-block')!.style.display = 'none';
+        document.getElementById('ailevel')!.style.display = 'none';
+        document.getElementById('id01')!.style.display = 'block';
+        document.getElementById('color-button-group')!.style.display = 'block';
+        document.getElementById('create-button')!.style.display = 'none';
+    }
+
+    playFriend(variantName: string = '', chess960: boolean = false) {
+        this.preSelectVariant(variantName, chess960);
+        const anon = this.model.anon === 'True';
+        this.createMode = 'playFriend';
+        document.getElementById('game-mode')!.style.display = anon ? 'none' : 'inline-flex';
+        document.getElementById('challenge-block')!.style.display = 'none';
+        document.getElementById('ailevel')!.style.display = 'none';
+        document.getElementById('id01')!.style.display = 'block';
+        document.getElementById('color-button-group')!.style.display = 'block';
+        document.getElementById('create-button')!.style.display = 'none';
+    }
+
+    playAI(variantName: string = '', chess960: boolean = false) {
+        this.preSelectVariant(variantName, chess960);
+        this.createMode = 'playAI';
+        document.getElementById('game-mode')!.style.display = 'none';
+        document.getElementById('challenge-block')!.style.display = 'none';
+        document.getElementById('ailevel')!.style.display = 'inline-block';
+        document.getElementById('id01')!.style.display = 'block';
+        document.getElementById('color-button-group')!.style.display = 'block';
+        document.getElementById('create-button')!.style.display = 'none';
+    }
+
+    playRM(variantName: string = '', chess960: boolean = false) {
+        this.preSelectVariant(variantName, chess960);
+        this.createMode = 'playRM';
+        document.getElementById('game-mode')!.style.display = 'none';
+        document.getElementById('challenge-block')!.style.display = 'none';
+        document.getElementById('ailevel')!.style.display = 'none';
+        document.getElementById('id01')!.style.display = 'block';
+        document.getElementById('color-button-group')!.style.display = 'block';
+        document.getElementById('create-button')!.style.display = 'none';
+    }
+
+    createHost(variantName: string = '', chess960: boolean = false) {
+        this.preSelectVariant(variantName, chess960);
+        const anon = this.model.anon === 'True';
+        this.createMode = 'createHost';
+        document.getElementById('game-mode')!.style.display = anon ? 'none' : 'inline-flex';
+        document.getElementById('challenge-block')!.style.display = 'none';
+        document.getElementById('ailevel')!.style.display = 'none';
+        document.getElementById('id01')!.style.display = 'block';
+        document.getElementById('color-button-group')!.style.display = 'none';
+        document.getElementById('create-button')!.style.display = 'block';
+    }
 
     private setVariant() {
         let e;
