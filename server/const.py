@@ -88,11 +88,11 @@ VARIANTS = (
     "shogun",
     "shako",
     "hoppelpoppel",
-    "orda",
+#    "orda",
     "synochess",
     "shinobi",
     "empire",
-    "ordamirror",
+#    "ordamirror",
     # "chak"
 )
 
@@ -135,7 +135,7 @@ VARIANT_ICONS = {
     "crazyhouse960": "%",
     "kyotoshogi": ")",
     "shogun": "-",
-    "orda": "R",
+#    "orda": "R",
     "synochess": "_",
     "hoppelpoppel": "`",
     "manchu": "{",
@@ -143,7 +143,7 @@ VARIANT_ICONS = {
     "atomic960": "\\",
     "shinobi": "🐢",
     "empire": "♚",
-    "ordamirror": "◩",
+#    "ordamirror": "◩",
     "asean": "♻",
     "chak": "🐬",
 }
@@ -167,7 +167,7 @@ VARIANT_960_TO_PGN = {
 CATEGORIES = {
     "chess": ("chess", "chess960", "crazyhouse", "crazyhouse960", "placement", "atomic", "atomic960", "antichess", "antichess960"),
     "fairy": ("capablanca", "capablanca960", "capahouse", "capahouse960", "seirawan", "seirawan960", "shouse", "grand", "grandhouse", "shako", "shogun", "hoppelpoppel"),
-    "army": ("orda", "synochess", "shinobi", "empire", "ordamirror", "chak"),
+    "army": ("synochess", "shinobi", "empire", "chak"),
     "makruk": ("makruk", "makpong", "cambodian", "sittuyin", "asean"),
     "shogi": ("shogi", "minishogi", "kyotoshogi", "dobutsu", "gorogoro", "torishogi"),
     "xiangqi": ("xiangqi", "manchu", "janggi", "minixiangqi"),
@@ -196,8 +196,8 @@ def variant_display_name(variant):
         return "S-HOUSE"
     elif variant == "cambodian":
         return "OUK CHATRANG"
-    elif variant == "ordamirror":
-        return "ORDA MIRROR"
+#    elif variant == "ordamirror":
+ #       return "ORDA MIRROR"
     elif variant == "kyotoshogi":
         return "KYOTO SHOGI"
     elif variant == "torishogi":
