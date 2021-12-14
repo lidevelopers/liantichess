@@ -45,43 +45,132 @@ CONSERVATIVE_CAPA_FEN = "arnbqkbnrc/pppppppppp/10/10/10/10/PPPPPPPPPP/ARNBQKBNRC
 VARIANTS = (
     "chess",
     "chess960",
+    "crazyhouse",
+    "crazyhouse960",
+    "placement",
+    "atomic",
+    "atomic960",
+    "kingofthehill",
+    "horde",
+    "threecheck",
     "antichess",
     "antichess960",
+    "racingkings",
+    "makruk",
+    "makpong",
+    "cambodian",
+    "sittuyin",
+    "asean",
     "shogi",
+    "minishogi",
+    "kyotoshogi",
+    "dobutsu",
+    "gorogoro",
+    "torishogi",
+    "xiangqi",
+    "manchu",
+    "janggi",
+    "minixiangqi",
+    "capablanca",
+    "capablanca960",
+    "capahouse",
+    "capahouse960",
     # We support to import/store/analyze these variants
     # but don't support to add them to leaderboard page
     # "gothic",
     # "gothhouse",
     # "embassy",
+    "seirawan",
+    "seirawan960",
+    "shouse",
+    "grand",
+    "grandhouse",
+    "shogun",
+    "shako",
+    "hoppelpoppel",
 #    "orda",
+    "synochess",
+    "shinobi",
+    "empire",
 #    "ordamirror",
     # "chak"
 )
 
 VARIANT_ICONS = {
+    "makruk": "Q",
+    "makpong": "O",
+    "sittuyin": ":",
     "shogi": "K",
+    "janggi": "=",
+    "xiangqi": "|",
     "chess": "M",
+    "crazyhouse": "+",
+    "placement": "S",
+    "kingofthehill": "🏳️",
+    "racingkings": "♔",
     "antichess": "♔",
     "antichess960": "♔",
+    "horde": "♟",
+    "threecheck": "♟",
+    "capablanca": "P",
+    "capahouse": "&",
+    "seirawan": "L",
+    "seirawan960": "}",
+    "shouse": "$",
+    "grand": "(",
+    "grandhouse": "*",
+    "gothic": "P",
+    "gothhouse": "&",
+    "embassy": "P",
+    "minishogi": "6",
+    "dobutsu": "8",
+    "gorogoro": "🐱",
+    "torishogi": "🐦",
+    "cambodian": "!",
+    "shako": "9",
+    "minixiangqi": "7",
     "chess960": "V",
+    "capablanca960": ",",
+    "capahouse960": "'",
+    "crazyhouse960": "%",
+    "kyotoshogi": ")",
+    "shogun": "-",
 #    "orda": "R",
+    "synochess": "_",
+    "hoppelpoppel": "`",
+    "manchu": "{",
+    "atomic": "~",
+    "atomic960": "\\",
+    "shinobi": "🐢",
+    "empire": "♚",
 #    "ordamirror": "◩",
+    "asean": "♻",
+    "chak": "🐬",
 }
 
 VARIANT_960_TO_PGN = {
     "chess": "Chess960",
+    "capablanca": "Caparandom",
+    "capahouse": "Capahouse960",
+    "crazyhouse": "Crazyhouse",  # to let lichess import work
+    "atomic": "Atomic",          # to let lichess import work
     "antichess": "Antichess",          # to let lichess import work    
+    "seirawan": "Seirawan960",
     # some early game is accidentally saved as 960 in mongodb
     "shogi": "Shogi",
+    "sittuyin": "Sittuyin",
+    "makruk": "Makruk",
+    "placement": "Placement",
+    "grand": "Grand",
 }
 
 CATEGORIES = {
-    "chess": ("chess", "chess960", "antichess", "antichess960"),
-    #"fairy": ("capablanca", "capablanca960", "capahouse", "capahouse960", "seirawan", "seirawan960", "shouse", "grand", "grandhouse", "shako", "shogun", "hoppelpoppel"),
-    #"army": ("synochess", "shinobi", "empire", "chak"),
-    #"makruk": ("makruk", "makpong", "cambodian", "sittuyin", "asean"),
-    "shogi": ("shogi"),
-    #"xiangqi": ("xiangqi", "manchu", "janggi", "minixiangqi"),
+    "chess": ("chess", "chess960", "crazyhouse", "crazyhouse960", "placement", "atomic", "atomic960", "antichess", "antichess960"),
+    "fairy": ("capablanca", "capablanca960", "capahouse", "capahouse960", "seirawan", "seirawan960", "shouse", "grand", "grandhouse", "shako", "shogun", "hoppelpoppel"),
+    "army": ("synochess", "shinobi", "empire", "chak"),
+    "makruk": ("makruk", "makpong", "cambodian", "sittuyin", "asean"),
+    "shogi": ("shogi", "minishogi", "kyotoshogi", "dobutsu", "gorogoro", "torishogi"),
+    "xiangqi": ("xiangqi", "manchu", "janggi", "minixiangqi"),
 }
 
 VARIANT_GROUPS = {}
@@ -98,23 +187,23 @@ TROPHIES = {
 }
 
 
-#def variant_display_name(variant):
- #   if variant == "seirawan":
-  #      return "S-CHESS"
-   # elif variant == "seirawan960":
-    #    return "S-CHESS960"
-    #elif variant == "shouse":
-     #   return "S-HOUSE"
-    #elif variant == "cambodian":
-     #   return "OUK CHATRANG"
+def variant_display_name(variant):
+    if variant == "seirawan":
+        return "S-CHESS"
+    elif variant == "seirawan960":
+        return "S-CHESS960"
+    elif variant == "shouse":
+        return "S-HOUSE"
+    elif variant == "cambodian":
+        return "OUK CHATRANG"
 #    elif variant == "ordamirror":
  #       return "ORDA MIRROR"
-    #elif variant == "kyotoshogi":
-     #   return "KYOTO SHOGI"
-    #elif variant == "torishogi":
-     #   return "TORI SHOGI"
-    #else:
-     #   return variant.upper()
+    elif variant == "kyotoshogi":
+        return "KYOTO SHOGI"
+    elif variant == "torishogi":
+        return "TORI SHOGI"
+    else:
+        return variant.upper()
 
 
 def pairing_system_name(system):
