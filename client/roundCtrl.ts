@@ -214,7 +214,7 @@ export default class RoundController {
             };
 
         //const ws = (location.host.indexOf('pychess') === -1) ? 'ws://' : 'wss://';
-        const ws = 'wss://'
+        const ws = (location.host.indexOf('0.0.0.0') === -1) ? 'wss://' : 'ws://'
         this.sock = new Sockette(ws + location.host + "/wsr", opts);
 
         this.model = model;
