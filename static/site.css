@@ -63,9 +63,6 @@
     --checkbox-border: #e3e3e3;
     --checkbox-checked: #7daa49;
     --post-hover: #ddebf8;
-    --vpanel-button: #fbfbfb;
-    --vpanel-button-hover: #fdfdfd;
-    --box-shadow-panel-btn: 0px 2px 3px #7b7b7b85; 
     --chat-entry-border-top: #d9d9d9;
     --chat-entry-bg: #fafaf9; 
     --toggle-bg: #c0c0c0;
@@ -117,10 +114,6 @@
     --checkbox-bg: #3b5c16;
     --checkbox-border: #4f7a1d;
     --post-hover: #29353f;
-    --vpanel-button: #3c3a35;
-    --vpanel-button-hover: #464440;
-    --panel-link-hover: rgb(179, 179, 179);
-    --box-shadow-panel-btn: none;
     --chat-entry-border-top: #404040;
     --chat-entry-bg: #262421; 
     --toggle-bg: #696969;
@@ -853,8 +846,8 @@ div#result {
 }
 @media (max-width: 799px) and (orientation: portrait) {
     .lobby-button {
-        padding: 0.5em;
-        margin: 0.2em 0;
+        padding: 2px 2px;
+        margin: 2px 0 2px 0;
     
     }
 }
@@ -1153,13 +1146,11 @@ table#seeks-header, table#seeks {
 }
 #seeks-table {
     box-shadow: var(--base-shadow);
+    background-size: cover;
     background-position: center;
-    background-image: url('images/seek-bg.svg');
+    background-image: url('images/Background2.svg');
     background-color: var(--bg-seek);
     background-blend-mode: overlay;
-    background-size: 100% 100%;
-    width: 100%;
-    height: 100%;
 }
 #seeks-wrapper {
     height: 320px;
@@ -1186,14 +1177,14 @@ table#seeks-header, table#seeks {
 }
 @media (max-width: 799px) and (orientation: portrait) {
     #seeks th, #seeks td {
-        font-weight: 300;
+        padding: .5em 0 .5em 0;
     }
 }
 #seeks thead th {
+    background: var(--bg-color2);
     position: sticky;
     top: 0;
     z-index: 2;
-    color: var(--button-text);
 }
 #seeks tbody tr {
     cursor: pointer;
@@ -1211,9 +1202,6 @@ table#seeks-header, table#seeks {
 #seekbuttons > button {
     color: var(--button-text);
     background: var(--button-new-game);
-    font-size: 1.1rem;
-    text-transform: uppercase; 
-    font-weight: 300;
     text-shadow: 0 1px 0 var(--text-shadow);
 }
 #seekbuttons > button:hover {
@@ -1395,9 +1383,6 @@ div.btn-controls.after {
     cursor: pointer;
 }
 
-button {
-    cursor: pointer;
-}
 button:disabled {
     color: var(--bg-color1);
 }
