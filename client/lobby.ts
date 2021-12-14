@@ -928,8 +928,7 @@ export function lobbyView(model: PyChessModel): VNode[] {
         h('aside.sidebar-second', [ h('div#seekbuttons') ]),
         h('under-left', [
             h('a.reflist', { attrs: { href: 'https://discord.gg/aPs8RKr' } }, 'Discord'),
-            h('a.reflist', { attrs: { href: 'https://github.com/gbtami/pychess-variants' } }, 'Github'),
-            h('a.reflist', { attrs: { href: '/patron' } }, _("Donate")),
+            h('a.reflist', { attrs: { href: 'https://github.com/' } }, 'Github'),
             h('a.reflist', { attrs: { href: '/faq' } }, _("FAQ")),
             h('a.reflist', { attrs: { href: '/stats' } }, _("Stats")),
             h('a.reflist', { attrs: { href: '/about' } }, _("About")),
