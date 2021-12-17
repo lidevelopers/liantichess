@@ -941,13 +941,13 @@ export function lobbyView(model: PyChessModel): VNode[] {
             ]),
             h('posts', [
                 // TODO: create news documents in mongodb and load latest 3 dinamically here
-                h('a.post', { attrs: {href: '/news/Nookie wins the First Antichess960 Shield Arena in Style'} }, [
-                    h('img', { attrs: {src: model["asset-url"] + 'https://i.imgur.com/EvXpRE9.png'} }),
+                h('a.post', { attrs: {href: '/news/Titled_Arena'} }, [
+                    h('img', { attrs: {src: model["asset-url"] + '/images/Titled_Arena.png'} }),
                     h('span.text', [
                         h('strong', "Nookie wins the First Antichess960 Shield Arena in Style"),
                         h('span', 'Nookie wins the First Antichess960 Shield Arena in Style'),
                     ]),
-                    h('time', 'Dec 16, 2021'),
+                    h('time', '2021-12-16'),
                 ]),
             ]),
         ]),
