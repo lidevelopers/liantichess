@@ -29,7 +29,6 @@ for f in fr/*.md; do
 showdown makehtml -i "$f" -o "$(basename -- "$f" .md).fr.html" --flavor github
 done
 
-showdown makehtml -i "zh/intro.md" -o "intro.zh.html" --flavor github
 
 
 SRC='https://github.com/gbtami/pychess-variants/blob/master'; 
