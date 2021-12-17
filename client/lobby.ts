@@ -938,6 +938,10 @@ export function lobbyView(model: PyChessModel): VNode[] {
                 h('icon', { attrs: {"data-icon": '2'} }),
                 h('a.reflist', { attrs: {href: '/news'} }, _("Latest updates")),
             ]),
+            h('under-right', [
+                h('a', { attrs: { href: '/players' } }, [ h('counter#u_cnt') ]),
+                h('a', { attrs: { href: '/games' } }, [ h('counter#g_cnt') ]),
+            ]),
             h('posts', [
                 // TODO: create news documents in mongodb and load latest 3 dinamically here
                 h('a.post', { attrs: {href: '/news/Nookie_wins_the_First_Antichess960_Shield_Arena'} }, [
@@ -999,10 +1003,6 @@ export function lobbyView(model: PyChessModel): VNode[] {
                 ]),
                 */ 
             ]),
-        ]),
-        h('under-right', [
-            h('a', { attrs: { href: '/players' } }, [ h('counter#u_cnt') ]),
-            h('a', { attrs: { href: '/games' } }, [ h('counter#g_cnt') ]),
         ]),
     ];
 }
