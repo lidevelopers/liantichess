@@ -941,7 +941,7 @@ export function lobbyView(model: PyChessModel): VNode[] {
             ]),
             h('posts', [
                 // TODO: create news documents in mongodb and load latest 3 dinamically here
-                h('a.post', { attrs: {href: '/news/Titled_Arena'} }, [
+                h('a.post', { attrs: {href: '/news/Titled_Arena.md'} }, [
                     h('img', { attrs: {src: model["asset-url"] + '/images/Titled_Arena.png'} }),
                     h('span.text', [
                         h('strong', "Nookie wins the First Antichess960 Shield Arena in Style"),
