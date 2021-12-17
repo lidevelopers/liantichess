@@ -8,7 +8,7 @@ Liantichess is a website dedicated to to play antichess and antichess960 and int
 
 <details><summary>Why is it called Liantichess?</summary>
 
-The server code is written like lichess and to play antichess.</details>
+The server code is written like pychess and to play antichess.</details>
 
 <details><summary>What is the relationship to [Lichess](https://lichess.org/)?</summary>
 
