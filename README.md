@@ -6,10 +6,10 @@ Liantichess is a free, open-source antichess server designed to play antichess v
 
 Currently supported games are:
 
-- [Makruk](https://www.pychess.org/variants/makruk)
-- [Standard chess](https://www.pychess.org/variants/chess)
+- [Antichess](https://liantichess.herokuapp.com/variants/antichess)
+- [Antichess960](https://liantichess.herokuapp.com/variants/antichess960)
 
-Additionally you can check Chess960 option in for Standard, Crazyhouse, Atomic, S-chess, Capablanca and Capahouse to start games from random positions with 
+Additionally you can check Chess960 option in for Antichess
 [Chess960 castling rules](https://en.wikipedia.org/wiki/Chess960#Castling_rules)
 
 For move generation, validation, analysis and engine play it uses
