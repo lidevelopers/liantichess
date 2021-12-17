@@ -1,4 +1,4 @@
-<h1 align="center">Nookie wins the First Antichess960 Shield Arena in Style</h1>
+<h1 align="center">Nookie wins the First Antichess960 Shield Arena</h1>
 
 <div class="meta-headline">
     <div class= "meta">
@@ -6,7 +6,7 @@
         <span class="text"><a href="/@/cFlour">@cFlour</a></span>
         <span class="text">Announcements</span>
     </div>
-    <div class= "headline">Nookie wins the First Antichess960 Shield Arena in Style</div>
+    <div class= "headline">Nookie wins the First Antichess960 Shield Arena</div>
 </div>
 </br>
 
