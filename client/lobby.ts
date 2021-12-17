@@ -949,7 +949,6 @@ export function lobbyView(model: PyChessModel): VNode[] {
                     ]),
                     h('time', 'Dec 16, 2021'),
                 ]),
-                */ 
             ]),
         ]),
 
