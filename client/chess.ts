@@ -463,7 +463,7 @@ export const VARIANTS: { [name: string]: Variant } = {
       startFen: "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w - - 0 1",
       board: "standard8x8", piece: "standard",
       pieceRoles: ["k", "q", "r", "b", "n", "p"],
-      promotionOrder: ["q", "n", "r", "b", "p", "k"],
+      promotionOrder: ["k", "q", "r", "b", "n", "p"],
       enPassant: true,
       chess960: true, icon: "♔", icon960: "♔",
     }),
