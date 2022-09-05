@@ -502,7 +502,7 @@ export default class TournamentController {
         const elements = [
         h('div.player', [h('user', [h('rank', '#' + game.br), game.b]), h('div#bresult')]),
         h(`div#mainboard.${variant.board}.${variant.piece}.${variant.boardMark}`, {
-            class: { "with-pockets": variant.pocket },
+            class: { "with-pockets": variant.pocketRoles('white') !== undefined },
             on: { click: () => window.location.assign('/' + game.gameId) }
             }, [
                 h(`div.cg-wrap.${variant.cg}.mini`, {
@@ -510,12 +510,12 @@ export default class TournamentController {
                         insert: vnode => {
                             const cg = Chessground(vnode.elm as HTMLElement,  {
                                 fen: game.fen,
-                                lastMove: game.lastMove,
-                                dimensions: variant.boardDimensions,
+                                // lastMove: game.lastMove,// TODO: i dont see such property in python searching for "top_game"
+                                geometry: variant.geometry,
                                 coordinates: false,
                                 viewOnly: true,
-                                addDimensionsCssVarsTo: document.body,
-                                pocketRoles: variant.pocketRoles,
+                                addDimensionsCssVars: true,
+                                pocketRoles: color => variant.pocketRoles(color),
                             });
                             this.topGameChessground = cg;
                             this.topGameId = game.gameId;

@@ -1,3 +1,5 @@
+//import { VNode } from 'snabbdom';
+
 import * as cg from 'chessgroundx/types';
 import { Chessground } from 'chessgroundx';
 import { Api } from 'chessgroundx/api';
@@ -47,11 +49,11 @@ export abstract class ChessgroundController implements IBoardController {
 
         this.chessground = Chessground(el, {
             fen: fen_placement as cg.FEN,
-            dimensions: this.variant.boardDimensions,
+            variant: this.variant.name as cg.Variant,
+            geometry: this.variant.geometry,
             notation: this.notation,
-            addDimensionsCssVarsTo: document.body,
-            kingRoles: this.variant.kingRoles,
-            pocketRoles: this.variant.pocketRoles,
+            addDimensionsCssVars: true,
+            pocketRoles: this.variant.pocketRoles.bind(this.variant),
         }, pocket0, pocket1);
 
         boardSettings.ctrl = this;

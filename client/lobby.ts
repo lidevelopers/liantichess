@@ -125,6 +125,8 @@ export class LobbyController implements IChatController {
         const e = document.getElementById("fen") as HTMLInputElement;
         if (this.fen !== "")
             e.value = this.fen;
+        if (this.anon)
+            e.disabled = true;
     }
 
     doSend(message: JSONObject) {
@@ -654,11 +656,7 @@ export class LobbyController implements IChatController {
         if (seek.fen) {
             tooltipImage = h('minigame.' + variant.board + '.' + variant.piece, [
                 h('div.cg-wrap.' + variant.cg + '.minitooltip',
-                    { hook: { insert: (vnode) => Chessground(vnode.elm as HTMLElement, {
-                        coordinates: false,
-                        fen: seek.fen,
-                        dimensions: variant.boardDimensions,
-                    })}}
+                    { hook: { insert: (vnode) => Chessground(vnode.elm as HTMLElement,{ coordinates: false, fen: seek.fen, geometry: variant.geometry }) } }
                 ),
             ]);
         } else {

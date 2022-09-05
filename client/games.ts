@@ -20,16 +20,13 @@ export interface Game {
     b: string;
     w: string;
     fen: cg.FEN;
-    lastMove: cg.Move;
+    lastMove: cg.Key[];
 }
 
-function gameView(games: {[gameId: string]: Api}, game: Game, fen: cg.FEN, lastMove: cg.Move) {
+function gameView(games: {[gameId: string]: Api}, game: Game, fen: cg.FEN, lastMove: cg.Key[]) {
     const variant = VARIANTS[game.variant];
     return h(`minigame#${game.gameId}.${variant.board}.${variant.piece}`, {
-        class: {
-            "with-pockets": variant.pocket,
-            "smaller-text": game.bTitle == "BOT",
-        },
+        class: { "with-pockets": variant.pocketRoles('white') !== undefined },
         on: { click: () => window.location.assign('/' + game.gameId) }
     }, h('div', [
         h('div.row', [
@@ -45,10 +42,11 @@ function gameView(games: {[gameId: string]: Api}, game: Game, fen: cg.FEN, lastM
                     const cg = Chessground(vnode.elm as HTMLElement, {
                         fen: fen,
                         lastMove: lastMove,
-                        dimensions: variant.boardDimensions,
+                        geometry: variant.geometry,
                         coordinates: false,
                         viewOnly: true,
-                        pocketRoles: variant.pocketRoles,
+                        addDimensionsCssVars: true,
+                        pocketRoles: color => variant.pocketRoles(color),
                     });
                     games[game.gameId] = cg;
                 }

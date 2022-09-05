@@ -32,7 +32,7 @@ async def BOT_task(bot, app):
                 continue
             # print("   +++ game_queues get()", event)
             if random_mover:
-                await play_move(app, bot, game, random.choice(game.legal_moves))
+                await play_move(app, bot, game, game.random_move)
             elif len(app["workers"]) > 0:
                 AI_move(game, level)
 
@@ -92,7 +92,7 @@ async def BOT_task(bot, app):
 
         if starting_player == bot.username:
             if random_mover:
-                await play_move(app, bot, game, random.choice(game.legal_moves))
+                await play_move(app, bot, game, game.random_move)
             else:
                 AI_move(game, level)
 

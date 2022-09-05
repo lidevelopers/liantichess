@@ -57,7 +57,6 @@ from tournaments import load_tournament, get_scheduled_tournaments
 from twitch import Twitch
 from youtube import Youtube
 from scheduler import create_scheduled_tournaments, new_scheduled_tournaments
-from videos import VIDEOS
 
 log = logging.getLogger(__name__)
 
@@ -70,11 +69,7 @@ async def on_prepare(request, response):
         # brotli compressed js
         response.headers["Content-Encoding"] = "br"
         return
-    elif (
-        request.path.startswith("/variants")
-        or request.path.startswith("/news")
-        or request.path.startswith("/video")
-    ):
+    elif request.path.startswith("/variants") or request.path.startswith("/news"):
         # Learn and News pages may have links to other sites
         response.headers["Cross-Origin-Resource-Policy"] = "cross-origin"
         return
@@ -82,10 +77,6 @@ async def on_prepare(request, response):
         # required to get stockfish.wasm in Firefox
         response.headers["Cross-Origin-Opener-Policy"] = "same-origin"
         response.headers["Cross-Origin-Embedder-Policy"] = "require-corp"
-
-        if request.match_info.get("gameId") is not None:
-            response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
-            response.headers["Expires"] = "0"
 
 
 def make_app(with_db=True) -> Application:
@@ -291,11 +282,6 @@ async def init_state(app):
         await app["db"].game.create_index("v")
         await app["db"].game.create_index("y")
         await app["db"].game.create_index("by")
-
-        if "video" not in db_collections:
-            if DEV:
-                await app["db"].video.drop()
-            await app["db"].video.insert_many(VIDEOS)
 
     except Exception:
         print("Maybe mongodb is not running...")

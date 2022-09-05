@@ -100,7 +100,8 @@ class TestTournament(Tournament):
                         opp_ws = opp_player.game_sockets[game.id]
                         await opp_ws.send_json(response)
                 else:
-                    move = random.choice(game.legal_moves)
+                    game.set_dests()
+                    move = game.random_move
                     clocks = {
                         "white": game.ply_clocks[-1]["white"],
                         "black": game.ply_clocks[-1]["black"],

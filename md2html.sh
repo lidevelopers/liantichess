@@ -18,8 +18,8 @@ done
 
 
 SRC='https://github.com/SriMethan/liantichess/blob/master'; 
-#DST='https://www.pychess.org';
-DST='https://cdn.jsdelivr.net/gh/gbtami/pychess-variants\@1.9.1';
+#DST='https://liantichess.herokuapp.com';
+DST='https://cdn.jsdelivr.net/gh/gbtami/pychess-variants\@1.7.7';
 find . -type f -name "*.html" -exec perl -pi -e s,$SRC,$DST,g '{}' +
 
 mkdir -p ../../templates/docs

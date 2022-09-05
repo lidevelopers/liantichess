@@ -50,7 +50,7 @@ interface Player {
     d: number;
 }
 
-function tournamentInfo(game: Game) {
+function toutnamentInfo(game: Game) {
     let elements = [h('info-date', { attrs: { timestamp: game["d"] } })];
     if (game["tid"]) {
         elements.push(h('span', " • "));
@@ -65,17 +65,18 @@ function renderGames(model: PyChessModel, games: Game[]) {
         const chess960 = game.z === 1;
 
         return h('tr', [h('a', { attrs: { href : '/' + game["_id"] } }, [
-            h('td.board', { class: { "with-pockets": variant.pocket } }, [
+            h('td.board', { class: { "with-pockets": variant.pocketRoles('white') !== undefined } }, [
                 h(`selection.${variant.board}.${variant.piece}`, [
                     h(`div.cg-wrap.${variant.cg}.mini`, {
                         hook: {
-                            insert: vnode => Chessground(vnode.elm as HTMLElement, {
+                            insert: vnode => Chessground(vnode.elm as HTMLElement,  {
                                 coordinates: false,
                                 viewOnly: true,
                                 fen: game["f"],
                                 lastMove: uci2LastMove(game.lm),
-                                dimensions: variant.boardDimensions,
-                                pocketRoles: variant.pocketRoles,
+                                geometry: variant.geometry,
+                                addDimensionsCssVars: true,
+                                pocketRoles: color => variant.pocketRoles(color),
                             })
                         }
                     }),
@@ -86,7 +87,7 @@ function renderGames(model: PyChessModel, games: Game[]) {
                     // h('div.info1.icon', { attrs: { "data-icon": (game["z"] === 1) ? "V" : "" } }),
                     h('div.info2', [
                         h('div.tc', timeControlStr(game["b"], game["i"], game["bp"]) + " • " + gameType(game["y"]) + " • " + variant.displayName(chess960)),
-                        h('div', tournamentInfo(game)),
+                        h('div', toutnamentInfo(game)),
                     ]),
                 ]),
                 h('div.info-middle', [

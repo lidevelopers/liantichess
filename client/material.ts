@@ -1,7 +1,8 @@
 import { h, VNode } from 'snabbdom';
 
 import * as cg from 'chessgroundx/types';
-import { read as fenRead } from 'chessgroundx/fen';
+import { read } from 'chessgroundx/fen';
+import { readPockets } from 'chessgroundx/pocket';
 
 import { Variant } from './chess';
 import { patch } from './document';
@@ -17,7 +18,7 @@ export function diff(lhs: MaterialDiff, rhs: MaterialDiff): MaterialDiff {
 }
 
 export function equivalentRole(variant: Variant, role: cg.Role): cg.Role {
-    if (variant.captureToHand) {
+    if (variant.drop) {
         if (role.indexOf('-') > 1)
             return role.slice(1) as cg.Role;
         else
@@ -50,21 +51,22 @@ export function equivalentRole(variant: Variant, role: cg.Role): cg.Role {
 export function calculateMaterialDiff(variant: Variant, fen?: string): MaterialDiff {
     if (!fen) fen = variant.startFen;
     const materialDiff : MaterialDiff = new Map();
-    const boardState = fenRead(fen, variant.boardDimensions);
 
-    for (const [_, piece] of boardState.pieces) {
+    for (const [_, piece] of read(fen)) {
         const letter = equivalentRole(variant, piece.role);
         const num = materialDiff.get(letter) ?? 0;
         materialDiff.set(letter, (piece.color === 'white') ? num - 1 : num + 1);
     }
 
-    if (boardState.pockets) {
-        for (const [role, count] of boardState.pockets.white.entries()) {
+    // TODO Make chessgroundx include pockets in fen read
+    if (variant.pocket) {
+        const initialPockets = readPockets(fen, variant.pocketRoles.bind(variant));
+        for (const [role, count] of Object.entries(initialPockets.white ?? {})) {
             const letter = equivalentRole(variant, role as cg.Role);
             const num = materialDiff.get(letter) ?? 0;
             materialDiff.set(letter, num - count);
         }
-        for (const [role, count] of boardState.pockets.black.entries()) {
+        for (const [role, count] of Object.entries(initialPockets.black ?? {})) {
             const letter = equivalentRole(variant, role as cg.Role);
             const num = materialDiff.get(letter) ?? 0;
             materialDiff.set(letter, num + count);
