@@ -39,6 +39,8 @@ const EVAL_REGEX = new RegExp(''
 const maxDepth = 18;
 const maxThreads = Math.max((navigator.hardwareConcurrency || 1) - 1, 1);
 
+const emptySan = '\xa0';
+
 function titleCase (words: string) {return words.split(' ').map(w =>  w.substring(0,1).toUpperCase() + w.substring(1).toLowerCase()).join(' ');}
 
 
@@ -50,8 +52,7 @@ export class AnalysisController extends GameController {
     settings: boolean;
     uci_usi: string;
     plyVari: number;
-    animation: boolean;
-    showDests: boolean;
+    plyInsideVari: number;
     analysisChart: Chart;
     movetimeChart: Chart;
     chartFunctions: any[];
@@ -63,10 +64,6 @@ export class AnalysisController extends GameController {
     notationAsObject: any;
     prevPieces: cg.Pieces;
     arrow: boolean;
-<<<<<<< HEAD
-    importedBy: string;
-    embed: boolean;
-=======
     multipv: number;
     evalFile: string;
     nnueOk: boolean;
@@ -75,11 +72,10 @@ export class AnalysisController extends GameController {
     fsfDebug: boolean;
     fsfError: string[];
     fsfEngineBoard: any;  // used to convert pv UCI move list to SAN
->>>>>>> 8baf6286df414025c1d48cda29c0d93d7617dddd
 
     constructor(el: HTMLElement, model: PyChessModel) {
         super(el, model);
-        this.fsfDebug = true;
+        this.fsfDebug = false;
         this.fsfError = [];
         this.embed = this.gameId === undefined;
         this.isAnalysisBoard = this.gameId === "";
@@ -125,6 +121,7 @@ export class AnalysisController extends GameController {
         this.plyVari = 0;
 
         this.settings = true;
+        this.dblClickPass = true;
         this.arrow = localStorage.arrow === undefined ? true : localStorage.arrow === "true";
         this.multipv = localStorage.multipv === undefined ? 1 : Math.max(1, Math.min(5, parseInt(localStorage.multipv)));
         this.evalFile = localStorage[`${this.variant.name}-nnue`] === undefined ? '' : localStorage[`${this.variant.name}-nnue`];
@@ -134,14 +131,12 @@ export class AnalysisController extends GameController {
         this.chessground.set({
             orientation: this.mycolor,
             turnColor: this.turnColor,
-            animation: { enabled: this.animation },
             movable: {
                 free: false,
                 color: this.turnColor,
-                showDests: this.showDests,
                 events: {
                     after: (orig, dest, meta) => this.onUserMove(orig, dest, meta),
-                    afterNewPiece: (role, dest, meta) => this.onUserDrop(role, dest, meta),
+                    afterNewPiece: (piece, dest, meta) => this.onUserDrop(piece, dest, meta),
                 }
             },
             events: {
@@ -225,8 +220,6 @@ export class AnalysisController extends GameController {
         this.onMsgBoard(model["board"] as MsgBoard);
     }
 
-<<<<<<< HEAD
-=======
     nnueIni() {
         if (this.localAnalysis && this.nnueOk) {
             this.engineStop();
@@ -236,9 +229,7 @@ export class AnalysisController extends GameController {
 
     pvboxIni() {
         if (this.localAnalysis) this.engineStop();
-        for (let i = 4; i >= 0; i--) {
-            this.vpvlines[i] = patch(this.vpvlines[i], h(`div#pv${i + 1}`, {props: {class: {"pv": `${i + 1 <= this.multipv}`}}}));
-        }
+        this.clearPvlines();
         if (this.localAnalysis) this.engineGo();
     }
 
@@ -247,7 +238,16 @@ export class AnalysisController extends GameController {
         this.vpvlines[i] = patch(this.vpvlines[i], h(`div#pv${i + 1}.pv`, pv));
     }
 
->>>>>>> 8baf6286df414025c1d48cda29c0d93d7617dddd
+    clearPvlines() {
+        for (let i = 4; i >= 0; i--) {
+            if (i + 1 <= this.multipv && this.localAnalysis) {
+                this.vpvlines[i] = patch(this.vpvlines[i], h(`div#pv${i + 1}.pv`, [h('pvline', h('pvline', '-'))]));
+            } else {
+                this.vpvlines[i] = patch(this.vpvlines[i], h(`div#pv${i + 1}`));
+            }
+        }
+    }
+
     toggleOrientation() {
         super.toggleOrientation()
         boardSettings.updateDropSuggestion();
@@ -266,9 +266,8 @@ export class AnalysisController extends GameController {
                     this.engineStop();
                     this.engineGo();
                 } else {
-                    this.vinfo = patch(this.vinfo, h('info#info', _('in local browser')));
-                    this.vpv = patch(this.vpv, h('div#pv'));
                     this.engineStop();
+                    this.pvboxIni();
                 }
             }}
         };
@@ -410,9 +409,9 @@ export class AnalysisController extends GameController {
 
         const lastMove = uci2LastMove(msg.lastMove);
         const step = this.steps[this.steps.length - 1];
-        const capture = (lastMove.length > 0) && ((this.chessground.state.pieces.get(lastMove[1]) && step.san?.slice(0, 2) !== 'O-') || (step.san?.slice(1, 2) === 'x'));
+        const capture = !!lastMove && ((this.chessground.state.boardState.pieces.get(lastMove[1]) && step.san?.slice(0, 2) !== 'O-') || (step.san?.slice(1, 2) === 'x'));
 
-        if (lastMove.length > 0 && (this.turnColor === this.mycolor || this.spectator)) {
+        if (lastMove && (this.turnColor === this.mycolor || this.spectator)) {
             sound.moveSound(this.variant, capture);
         }
         this.checkStatus(msg);
@@ -460,8 +459,6 @@ export class AnalysisController extends GameController {
         if (!this.localEngine) {
             this.localEngine = true;
             patch(document.getElementById('input') as HTMLElement, h('input#input', {attrs: {disabled: false}}));
-<<<<<<< HEAD
-=======
             this.fsfEngineBoard = new this.ffish.Board(this.variant.name, this.fullfen, this.chess960);
 
             if (this.evalFile) {
@@ -482,17 +479,13 @@ export class AnalysisController extends GameController {
             }
 
             window.addEventListener('beforeunload', () => this.fsfEngineBoard.delete());
->>>>>>> 8baf6286df414025c1d48cda29c0d93d7617dddd
         }
 
         if (!this.localAnalysis || !this.isEngineReady) return;
 
         const matches = line.match(EVAL_REGEX);
         if (!matches) {
-            if (line.includes('mate 0')) {
-                const msg: MsgAnalysis = {type: 'local-analysis', ply: this.ply, color: this.turnColor.slice(0, 1), ceval: {d: 0, s: {mate: 0}}};
-                this.onMsgAnalysis(msg);
-            }
+            if (line.includes('mate 0')) this.clearPvlines();
             return;
         }
 
@@ -534,6 +527,32 @@ export class AnalysisController extends GameController {
 
     // Updates PV, score, gauge and the best move arrow
     drawEval = (ceval: Ceval | undefined, scoreStr: string | undefined, turnColor: cg.Color) => {
+
+        const pvlineIdx = (ceval && ceval.multipv) ? ceval.multipv - 1 : 0;
+
+        // Render PV line
+        if (ceval?.p !== undefined) {
+            let pvSan: string | VNode = ceval.p;
+            if (this.fsfEngineBoard) {
+                try {
+                    this.fsfEngineBoard.setFen(this.fullfen);
+                    pvSan = this.fsfEngineBoard.variationSan(ceval.p, this.notationAsObject);
+                    if (pvSan === '') pvSan = emptySan;
+                } catch (error) {
+                    pvSan = emptySan;
+                }
+            }
+            if (pvSan !== emptySan) {
+                pvSan = h('pv-san', { on: { click: () => this.makePvMove(ceval.p as string) } } , pvSan)
+                this.pvView(pvlineIdx, h('pvline', [(this.multipv > 1 && this.localAnalysis) ? h('strong', scoreStr) : '', pvSan]));
+            }
+        } else {
+            this.pvView(pvlineIdx, h('pvline', (this.localAnalysis) ? h('pvline', '-') : ''));
+        }
+
+        // Render gauge, arrow and main score value for first PV line only
+        if (pvlineIdx > 0) return;
+
         let shapes0: DrawShape[] = [];
         this.chessground.setAutoShapes(shapes0);
 
@@ -562,12 +581,7 @@ export class AnalysisController extends GameController {
                 if (atPos > -1) {
                     const d = pv_move.slice(atPos + 1, atPos + 3) as cg.Key;
                     let color = turnColor;
-                    const variant = this.variant.name;
-                    const dropPieceRole = util.roleOf(pv_move.slice(0, atPos) as cg.PieceLetter);
-                    const orientation = this.flipped() ? this.oppcolor : this.mycolor;
-                    const side = color === orientation ? "ally" : "enemy";
-                    const url = getPieceImageUrl(variant, dropPieceRole, color, side);
-                    this.chessground.set({ drawable: { pieces: { baseUrl: url! } } });
+                    const dropPieceRole = util.roleOf(pv_move.slice(0, atPos) as cg.Letter);
 
                     shapes0 = [{
                         orig: d,
@@ -657,14 +671,11 @@ export class AnalysisController extends GameController {
             this.fsfPostMessage('setoption name EvalFile value ' + this.evalFile);
         }
 
-<<<<<<< HEAD
-=======
         //console.log('setoption name Threads value ' + maxThreads);
         this.fsfPostMessage('setoption name Threads value ' + maxThreads);
 
         this.fsfPostMessage('setoption name MultiPV value ' + this.multipv);
 
->>>>>>> 8baf6286df414025c1d48cda29c0d93d7617dddd
         //console.log('position fen ', this.fullfen);
         this.fsfPostMessage('position fen ' + this.fullfen);
 
@@ -687,6 +698,7 @@ export class AnalysisController extends GameController {
 
         if (this.localAnalysis) {
             this.engineStop();
+            this.clearPvlines();
             // Go back to the main line
             if (plyVari === 0) {
                 const container = document.getElementById('vari') as HTMLElement;
@@ -884,6 +896,7 @@ export class AnalysisController extends GameController {
         // console.log("got analysis_board msg:", msg);
         if (msg.gameId !== this.gameId) return;
         if (this.localAnalysis) this.engineStop();
+        this.clearPvlines();
 
         this.fullfen = msg.fen;
         this.ply = msg.ply

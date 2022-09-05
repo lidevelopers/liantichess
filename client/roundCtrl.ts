@@ -1,6 +1,8 @@
 import Sockette from 'sockette';
 
 import { h, VNode } from 'snabbdom';
+import { premove } from 'chessgroundx/premove';
+import { predrop } from 'chessgroundx/predrop';
 import * as cg from 'chessgroundx/types';
 
 import { JSONObject } from './types';
@@ -48,8 +50,6 @@ export class RoundController extends GameController {
     berserkable: boolean;
     settings: boolean;
     tv: boolean;
-    animation: boolean;
-    showDests: boolean;
     blindfold: boolean;
     handicap: boolean;
     setupFen: string;
@@ -147,7 +147,6 @@ export class RoundController extends GameController {
             orientation: this.mycolor,
             turnColor: this.turnColor,
             autoCastle: this.variant.name !== 'cambodian', // TODO make more generic
-            animation: { enabled: this.animation },
         });
 
         if (this.spectator) {
@@ -156,34 +155,26 @@ export class RoundController extends GameController {
                 movable: { free: false, color: undefined },
                 draggable: { enabled: false },
                 premovable: { enabled: false },
-                predroppable: { enabled: false },
                 events: { move: this.onMove() }
             });
         } else {
             this.chessground.set({
-                animation: { enabled: this.animation },
                 movable: {
                     free: false,
-                    color: this.mycolor,
-                    showDests: this.showDests,
+                    color: (this.variant.setup && this.status === -2) ? undefined : this.mycolor,
                     events: {
                         after: (orig, dest, meta) => this.onUserMove(orig, dest, meta),
-                        afterNewPiece: (role, dest, meta) => this.onUserDrop(role, dest, meta),
+                        afterNewPiece: (piece, dest, meta) => this.onUserDrop(piece, dest, meta),
                     }
                 },
                 premovable: {
                     enabled: true,
+                    premoveFunc: premove(this.variant.name, this.chess960, this.variant.boardDimensions),
+                    predropFunc: predrop(this.variant.name, this.variant.boardDimensions),
                     events: {
                         set: this.setPremove,
                         unset: this.unsetPremove,
-                        }
-                },
-                predroppable: {
-                    enabled: true,
-                    events: {
-                        set: this.setPredrop,
-                        unset: this.unsetPredrop,
-                        }
+                    }
                 },
                 events: {
                     move: this.onMove(),
@@ -199,7 +190,7 @@ export class RoundController extends GameController {
         this.vplayer0 = patch(player0, player('player0', this.titles[0], this.players[0], this.ratings[0], this.level));
         this.vplayer1 = patch(player1, player('player1', this.titles[1], this.players[1], this.ratings[1], this.level));
 
-        if (this.variant.materialDiff) {
+        if (this.variant.showMaterialDiff) {
             const materialTop = document.querySelector('.material-top') as HTMLElement;
             const materialBottom = document.querySelector('.material-bottom') as HTMLElement;
             this.vmaterial0 = this.mycolor === 'white' ? materialBottom : materialTop;
@@ -310,13 +301,15 @@ export class RoundController extends GameController {
 
         const container = document.getElementById('game-controls') as HTMLElement;
         if (!this.spectator) {
-            const pass = this.variant.pass;
             let buttons = [];
             if (!this.tournamentGame) {
                 buttons.push(h('button#abort', { on: { click: () => this.abort() }, props: {title: _('Abort')} }, [h('i', {class: {"icon": true, "icon-abort": true} } ), ]));
             }
             buttons.push(h('button#count', _('Count')));
-            buttons.push(h('button#draw', { on: { click: () => (pass) ? this.pass() : this.draw() }, props: {title: (pass) ? _('Pass') : _("Draw")} }, [(pass) ? _('Pass') : h('i', '½')]));
+            if (this.variant.pass)
+                buttons.push(h('button#draw', { on: { click: () => { if (this.mycolor === this.turnColor) this.pass(); } }, props: { title: _('Pass') } }, _('Pass')));
+            else
+                buttons.push(h('button#draw', { on: { click: () => this.draw() }, props: { title: _('Draw') } }, h('i', '½')));
             buttons.push(h('button#resign', { on: { click: () => this.resign() }, props: {title: _("Resign")} }, [h('i', {class: {"icon": true, "icon-flag-o": true} } ), ]));
             
             this.gameControls = patch(container, h('div.btn-controls', buttons));
@@ -348,7 +341,7 @@ export class RoundController extends GameController {
         boardSettings.updateDropSuggestion();
 
         // console.log("FLIP");
-        if (this.variant.materialDiff) {
+        if (this.variant.showMaterialDiff) {
             this.updateMaterial();
         }
 
@@ -660,7 +653,7 @@ export class RoundController extends GameController {
         if (latestPly) this.ply = msg.ply;
 
         if (this.ply === 0) {
-            if (this.variant.name === 'janggi') {
+            if (this.variant.setup) {
                 // force to set new dests after setup phase!
                 latestPly = true;
             } else {
@@ -687,30 +680,14 @@ export class RoundController extends GameController {
         }
 
         this.fullfen = msg.fen;
-
-        if (this.variant.gate) {
-            // When castling with gating is possible 
-            // e1g1, e1g1h, e1g1e, h1e1h, h1e1e all will be offered by moving our king two squares
-            // so we filter out rook takes king moves (h1e1h, h1e1e) from dests
-            for (const orig in msg.dests) {
-                if (orig[1] !== '@') {
-                const movingPiece = this.chessground.state.pieces.get(orig as cg.Key);
-                if (movingPiece !== undefined && movingPiece.role === "r-piece") {
-                    msg.dests[orig] = msg.dests[orig].filter(x => {
-                        const destPiece = this.chessground.state.pieces.get(x);
-                        return destPiece === undefined || destPiece.role !== 'k-piece';
-                    });
-                }
-                }
-            }
+        if (this.ffishBoard) {
+            this.ffishBoard.setFen(this.fullfen);
+            this.setDests();
         }
+
         const parts = msg.fen.split(" ");
         this.turnColor = parts[1] === "w" ? "white" : "black";
 
-        this.dests = (msg.status < 0) ? new Map(Object.entries(msg.dests)) : new Map();
-
-        // list of legal promotion moves
-        this.promotions = msg.promo;
         this.clocktimes = msg.clocks || this.clocktimes;
 
         this.result = msg.result;
@@ -753,9 +730,9 @@ export class RoundController extends GameController {
 
         const lastMove = uci2LastMove(msg.lastMove);
         const step = this.steps[this.steps.length - 1];
-        const capture = (lastMove.length > 0) && ((this.chessground.state.pieces.get(lastMove[1]) && step.san?.slice(0, 2) !== 'O-') || (step.san?.slice(1, 2) === 'x'));
+        const capture = !!lastMove && ((this.chessground.state.boardState.pieces.get(lastMove[1]) && step.san?.slice(0, 2) !== 'O-') || (step.san?.slice(1, 2) === 'x'));
 
-        if (lastMove.length > 0 && (this.turnColor === this.mycolor || this.spectator)) {
+        if (lastMove && (this.turnColor === this.mycolor || this.spectator)) {
             if (!this.finishedGame) sound.moveSound(this.variant, capture);
         }
         this.checkStatus(msg);
@@ -824,8 +801,7 @@ export class RoundController extends GameController {
                         turnColor: this.turnColor,
                         movable: {
                             free: false,
-                            color: this.mycolor,
-                            dests: this.dests,
+                            color: (this.variant.setup && this.status === -2) ? undefined : this.mycolor,
                         },
                         check: msg.check,
                         lastMove: lastMove,
@@ -836,7 +812,6 @@ export class RoundController extends GameController {
                     // prevent sending premove/predrop when (auto)reconnecting websocked asks server to (re)sends the same board to us
                     // console.log("trying to play premove....");
                     if (this.premove) this.performPremove();
-                    if (this.predrop) this.performPredrop();
                 }
                 if (this.clockOn && msg.status < 0) {
                     this.clocks[myclock].start();
@@ -861,15 +836,10 @@ export class RoundController extends GameController {
     goPly = (ply: number, plyVari = 0) => {
         super.goPly(ply, plyVari);
 
-        const step = this.steps[ply];
-        this.chessground.set({
-            movable: {
-                free: false,
-                color: this.spectator ? undefined : step.turnColor,
-                dests: (this.turnColor === this.mycolor && this.result === "*" && ply === this.steps.length - 1) ? this.dests : undefined,
-            }
-        });
-
+        if (this.turnColor !== this.mycolor || this.result !== "*" || ply !== this.steps.length - 1) {
+            this.chessground.set({ movable: { dests: undefined } });
+        }
+        
         this.updateMaterial();
     }
 
@@ -941,13 +911,13 @@ export class RoundController extends GameController {
     }
 
     private updateMaterial(): void {
-        if (this.variant.materialDiff && this.materialDifference)
+        if (this.variant.showMaterialDiff && this.materialDifference)
             [this.vmaterial0, this.vmaterial1] = updateMaterial(this.variant, this.fullfen, this.vmaterial0, this.vmaterial1, this.flipped());
         else
             [this.vmaterial0, this.vmaterial1] = emptyMaterial(this.variant);
     }
 
-    private setPremove = (orig: cg.Key, dest: cg.Key, metadata?: cg.SetPremoveMetadata) => {
+    private setPremove = (orig: cg.Orig, dest: cg.Key, metadata?: cg.SetPremoveMetadata) => {
         this.premove = { orig, dest, metadata };
         // console.log("setPremove() to:", orig, dest, meta);
     }
@@ -957,27 +927,11 @@ export class RoundController extends GameController {
         this.preaction = false;
     }
 
-    private setPredrop = (role: cg.Role, key: cg.Key) => {
-        this.predrop = { role, key };
-        // console.log("setPredrop() to:", role, key);
-    }
-
-    private unsetPredrop = () => {
-        this.predrop = undefined;
-        this.preaction = false;
-    }
-
     private performPremove = () => {
         // const { orig, dest, meta } = this.premove;
         // TODO: promotion?
         // console.log("performPremove()", orig, dest, meta);
         this.chessground.playPremove();
-    }
-
-    private performPredrop = () => {
-        // const { role, key } = this.predrop;
-        // console.log("performPredrop()", role, key);
-        this.chessground.playPredrop();
     }
 
     private renderExpiration = () => {
@@ -1029,7 +983,7 @@ export class RoundController extends GameController {
             // prevent sending gameStart message when user just reconecting
             if (msg.ply === 0) {
                 this.doSend({ type: "ready", gameId: this.gameId });
-                if (this.variant.name === 'janggi') {
+                if (this.variant.setup) {
                     this.doSend({ type: "board", gameId: this.gameId });
                 }
             }
