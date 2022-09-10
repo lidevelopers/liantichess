@@ -446,7 +446,7 @@ export const VARIANTS: { [name: string]: Variant } = {
             board: "standard8x8", piece: "standard",
             pieceLetters: ["k", "q", "r", "b", "n", "p"],
             pocketLetters: ["p", "n", "b", "r", "q", "k"],
-            enPassant: true, drop: true,
+            enPassant: true, captureToHand: true,
             chess960: true, icon: "♔", icon960: "♔",
           }),
 

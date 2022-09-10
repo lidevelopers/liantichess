@@ -13,7 +13,7 @@ import { timeControlStr } from './view';
 import { notify } from './notification';
 import { PyChessModel } from "./types";
 import { MsgChat, MsgFullChat } from "./messages";
-import { variantPanels } from './lobby/layer1';
+//import { variantPanels } from './lobby/layer1';
 import { Stream, Spotlight, MsgInviteCreated, MsgHostCreated, MsgGetSeeks, MsgNewGame, MsgGameInProgress, MsgUserConnected, MsgPing, MsgError, MsgShutdown, MsgGameCounter, MsgUserCounter, MsgStreams, MsgSpotlights, Seek, CreateMode } from './lobbyType';
 
 export class LobbyController implements IChatController {
@@ -98,7 +98,7 @@ export class LobbyController implements IChatController {
         patch(document.getElementById('seekbuttons') as HTMLElement, h('div#seekbuttons', this.renderSeekButtons()));
         patch(document.getElementById('lobbychat') as HTMLElement, chatView(this, "lobbychat"));
 
-        patch(document.getElementById('variants-catalog') as HTMLElement, variantPanels(this));
+        //patch(document.getElementById('variants-catalog') as HTMLElement, variantPanels(this));
 
         this.streams = document.getElementById('streams') as HTMLElement;
 
@@ -876,12 +876,12 @@ export function lobbyView(model: PyChessModel): VNode[] {
                 h('div#seeks-wrapper', h('table#seeks', { hook: { insert: vnode => runSeeks(vnode, model) } })),
             ]),
         ]),
-        h('div#variants-catalog'),
+        //h('div#variants-catalog'),
         h('aside.sidebar-second', [ h('div#seekbuttons') ]),
         h('under-left', [
-            h('a.reflist', { attrs: { href: 'https://discord.gg/aPs8RKr', rel: "noopener", target: "_blank" } }, 'Discord'),
-            h('a.reflist', { attrs: { href: 'https://github.com/gbtami/pychess-variants', rel: "noopener", target: "_blank" } }, 'Github'),
-            h('a.reflist', { attrs: { href: 'https://www.youtube.com/channel/UCj_r_FSVXQFLgZLwSeFBE8g', rel: "noopener", target: "_blank" } }, 'YouTube'),
+            h('a.reflist', { attrs: { href: 'https://discord.gg/x9rUBkTmxB', rel: "noopener", target: "_blank" } }, 'Discord'),
+            h('a.reflist', { attrs: { href: 'https://github.com/srimethan/liantichess', rel: "noopener", target: "_blank" } }, 'Github'),
+            //h('a.reflist', { attrs: { href: 'https://www.youtube.com/channel/UCj_r_FSVXQFLgZLwSeFBE8g', rel: "noopener", target: "_blank" } }, 'YouTube'),
             h('a.reflist', { attrs: { href: '/patron' } }, _("Donate")),
             h('a.reflist', { attrs: { href: '/faq' } }, _("FAQ")),
             h('a.reflist', { attrs: { href: '/stats' } }, _("Stats")),
@@ -889,29 +889,29 @@ export function lobbyView(model: PyChessModel): VNode[] {
         ]),
         h('under-lobby', [
             h('posts', [
-                h('a.post', { attrs: {href: '/news/NNUE_Everywhere'} }, [
-                    h('img', { attrs: {src: model.assetURL + '/images/Weights-nn-62ef826d1a6d.png'} }),
+                h('a.post', { attrs: {href: '/news/shield'} }, [
+                    h('img', { attrs: {src: model["assetURL"] + '/images/shieldwin.png'} }),
                     h('span.text', [
-                        h('strong', _("Fairy-Stockfish on PyChess")),
-                        h('span', _('NNUE Everywhere')),
+                        h('strong', "Aleksschtin on Antichess960 Shield Arena streak"),
+                        h('span', 'No opening theory, only pure instinct and chaos'),
                     ]),
-                    h('time', '2022.08.04'),
-                ]),
-                h('a.post', { attrs: {href: '/news/Serving_a_New_Variant'} }, [
-                    h('img', { attrs: {src: model.assetURL + '/images/ChessTennis.jpg'} }),
+                    h('time', '2022.07.15'),
+                ]), 
+                h('a.post', { attrs: {href: '/news/summer'} }, [
+                    h('img', { attrs: {src: model["assetURL"] + '/images/summer.png'} }),
                     h('span.text', [
-                        h('strong', _("Tennis and chess")),
-                        h('span', _('Serving a New Variant')),
+                        h('strong', "Liantichess Summer Marathon Tournament"),
+                        h('span', 'Antichess Marathon #2'),
                     ]),
-                    h('time', '2022.02.01'),
-                ]),
-                h('a.post', { attrs: {href: '/news/Merry_Chakmas'} }, [
-                    h('img', { attrs: {src: model.assetURL + '/images/QuetzalinTikal.png'} }),
+                    h('time', '2022.07.12'),
+                ]),                
+                h('a.post', { attrs: {href: '/news/fools'} }, [
+                    h('img', { attrs: {src: model["assetURL"] + '/images/fools.jpg'} }),
                     h('span.text', [
-                        h('strong', _("Christmas gift from PyChess")),
-                        h('span', _('Merry Chak-mas!')),
+                        h('strong', "[April Fools] Liantichess's database is running out"),
+                        h('span', 'Liantichess Mongodb database is running out of space, It will delete all your games, and all the user accounts, and it will empty the oceans, silence the birds and shut down the sun.'),
                     ]),
-                    h('time', '2021.12.24'),
+                    h('time', '2022.04.01'),
                 ]),
                 /*
                 h('a.post', { attrs: {href: '/news/Cold_Winter'} }, [
