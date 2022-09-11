@@ -20,7 +20,7 @@
 }
 /* 9x9 */
 .cg-wrap.cg-576 {
-    padding-bottom: calc(1200 * 100% / 1100);
+    padding-bottom: calc(540 * 100% / 468);
 }
 .cg-wrap.cg-576.mini {
   width: 304px;
@@ -255,21 +255,17 @@ cg-board piece.dragging {
   cursor: move;
   z-index: 9;
 }
-
 piece.anim {
   z-index: 8;
 }
-
 piece.fading {
   z-index: 1;
   opacity: 0.5;
 }
-
 .cg-wrap piece.ghost {
   opacity: 0.3;
 }
-
-.cg-wrap piece svg {
+.cg-wrap svg {
   overflow: hidden;
   position: relative;
   top: 0px;
@@ -280,8 +276,10 @@ piece.fading {
   z-index: 2;
   opacity: 0.6;
 }
+.cg-wrap piece svg image {
+  opacity: 0.5;
+}
 
-.cg-wrap cg-auto-pieces,
 .cg-wrap .cg-shapes,
 .cg-wrap .cg-custom-svgs {
   overflow: hidden;
@@ -293,16 +291,7 @@ piece.fading {
   pointer-events: none;
 }
 
-.cg-wrap cg-auto-pieces {
-  z-index: 2;
-}
-
-.cg-wrap cg-auto-pieces piece {
-  opacity: 0.3;
-}
-
 .cg-wrap .cg-shapes {
-  overflow: hidden;
   opacity: 0.6;
   z-index: 2;
 }
@@ -310,6 +299,7 @@ piece.fading {
 .cg-wrap .cg-custom-svgs {
   /* over piece.anim = 8, but under piece.dragging = 10 */
   z-index: 9;
+  overflow: visible;
 }
 
 .cg-wrap .cg-custom-svgs svg {
