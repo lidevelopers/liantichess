@@ -5,7 +5,7 @@
   "description": "Antichess Variants Server",
   "repository": {
     "type": "git",
-    "url": "https://github.comSriMethan/liantichess.git"
+    "url": "https://github.com/SriMethan/liantichess.git"
   },
   "main": "static/pychess-variants.js",
   "author": "Bajusz Tamás And LiAntichess Developers",
