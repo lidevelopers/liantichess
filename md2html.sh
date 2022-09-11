@@ -17,9 +17,9 @@ for f in *.md; do
 done
 
 
-SRC='https://github.com/SriMethan/liantichess/blob/master'; 
+SRC='https://github.com/SriMethan/liantichess/tree/merge-test'; 
 #DST='https://liantichess.herokuapp.com';
-DST='https://cdn.jsdelivr.net/gh/gbtami/pychess-variants\@1.7.7';
+DST='https://cdn.jsdelivr.net/gh/gbtami/pychess-variants\@1.9.2';
 find . -type f -name "*.html" -exec perl -pi -e s,$SRC,$DST,g '{}' +
 
 mkdir -p ../../templates/docs

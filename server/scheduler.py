@@ -98,7 +98,6 @@ class Scheduler:
             plans.append(Plan(MONTHLY, date, 16, v.rstrip("960"), is_960, base, inc, byo, 90))
 
         plans += [
-            # Shields
             Plan(SHIELD, self.first_monthly(SUNDAY), 18, "antichess", False, 3, 2, 0, 180),
             Plan(SHIELD, self.second_monthly(SUNDAY), 18, "losers", False, 3, 2, 0, 180),
             Plan(SHIELD, self.third_monthly(SUNDAY), 18, "antichess", True, 3, 2, 0, 180),
@@ -191,7 +190,7 @@ def new_scheduled_tournaments(already_scheduled, now=None):
             new_tournaments_data.append(
                 {
                     "name": name,
-                    "createdBy": "Liantichess",
+                    "createdBy": "LiAntichess",
                     "frequency": plan.freq,
                     "variant": plan.variant,
                     "chess960": plan.is960,

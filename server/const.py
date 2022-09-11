@@ -299,9 +299,11 @@ def variant_display_name(variant):
     elif variant == "shouse":
         return "S-HOUSE"
     elif variant == "cambodian":
-        return "OUK CHATRANG"
-#    elif variant == "ordamirror":
- #       return "ORDA MIRROR"
+        return "OUK CHAKTRANG"
+    elif variant == "ordamirror":
+        return "ORDA MIRROR"
+    elif variant == "gorogoroplus":
+        return "GOROGORO+"
     elif variant == "kyotoshogi":
         return "KYOTO SHOGI"
     elif variant == "torishogi":

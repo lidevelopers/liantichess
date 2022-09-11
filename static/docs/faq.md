@@ -64,6 +64,9 @@ No! That is done via OAuth and your password isn't revealed to LiAntichess, just
 <details><summary>What's the best way to contact the developers?</summary>
 
 You can try the lobby chat, although the developers might not be on to answer. More reliably, we use [Discord](https://discord.gg/S3JmrXtsF2).</details>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 98dc9a4493722ed071662aaf3c7e580b021c8ff6
 
 

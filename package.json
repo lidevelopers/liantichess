@@ -8,12 +8,12 @@
     "url": "https://github.com/SriMethan/liantichess.git"
   },
   "main": "static/pychess-variants.js",
-  "author": "Bajusz Tamás And SriMethan",
+  "author": "Bajusz Tamás And LiAntichess Developers",
   "license": "AGPL-3.0",
   "bugs": {
     "url": "https://github.com/SriMethan/liantichess/issues"
   },
-  "funding": "https://patreon.com/srimethan",
+  "funding": "patreon.com/SriMethan",
   "dependencies": {
     "chessgroundx": "^9.2.0",
     "ffish-es6": "^0.6.8",

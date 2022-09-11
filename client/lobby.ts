@@ -8,12 +8,12 @@ import { JSONObject } from './types';
 import { _, ngettext } from './i18n';
 import { patch } from './document';
 import { chatMessage, chatView, IChatController } from './chat';
-import { validFen, VARIANTS, selectVariant, Variant } from './chess';
+import { validFen, VARIANTS, selectVariant, Variant, sanitizedFen } from './chess';
 import { timeControlStr } from './view';
 import { notify } from './notification';
 import { PyChessModel } from "./types";
 import { MsgChat, MsgFullChat } from "./messages";
-import { variantPanels } from './lobby/layer1';
+//import { variantPanels } from './lobby/layer1';
 import { Stream, Spotlight, MsgInviteCreated, MsgHostCreated, MsgGetSeeks, MsgNewGame, MsgGameInProgress, MsgUserConnected, MsgPing, MsgError, MsgShutdown, MsgGameCounter, MsgUserCounter, MsgStreams, MsgSpotlights, Seek, CreateMode } from './lobbyType';
 
 export class LobbyController implements IChatController {
@@ -98,7 +98,7 @@ export class LobbyController implements IChatController {
         patch(document.getElementById('seekbuttons') as HTMLElement, h('div#seekbuttons', this.renderSeekButtons()));
         patch(document.getElementById('lobbychat') as HTMLElement, chatView(this, "lobbychat"));
 
-  //      patch(document.getElementById('variants-catalog') as HTMLElement, variantPanels(this));
+        //patch(document.getElementById('variants-catalog') as HTMLElement, variantPanels(this));
 
         this.streams = document.getElementById('streams') as HTMLElement;
 
@@ -554,7 +554,11 @@ export class LobbyController implements IChatController {
         this.setStartButtons();
     }
     private setFen() {
+        const variantEl = document.getElementById('variant') as HTMLSelectElement;
+        const variant = VARIANTS[variantEl.options[variantEl.selectedIndex].value];
+
         const e = document.getElementById('fen') as HTMLInputElement;
+        e.value = sanitizedFen(variant, e.value);
         e.setCustomValidity(this.validateFen() ? '' : _('Invalid FEN'));
         this.setStartButtons();
     }
@@ -870,14 +874,110 @@ export function lobbyView(model: PyChessModel): VNode[] {
                 h('div#seeks-wrapper', h('table#seeks', { hook: { insert: vnode => runSeeks(vnode, model) } })),
             ]),
         ]),
-  //      h('div#variants-catalog'),
+        //h('div#variants-catalog'),
         h('aside.sidebar-second', [ h('div#seekbuttons') ]),
         h('under-left', [
-            h('a.reflist', { attrs: { href: 'https://discord.gg/5qvjPQstKS' } }, 'Discord'),
-            h('a.reflist', { attrs: { href: 'https://github.com/SriMethan/Liantichess' } }, 'Github'),
+            h('a.reflist', { attrs: { href: 'https://discord.gg/x9rUBkTmxB', rel: "noopener", target: "_blank" } }, 'Discord'),
+            h('a.reflist', { attrs: { href: 'https://github.com/srimethan/liantichess', rel: "noopener", target: "_blank" } }, 'Github'),
+            //h('a.reflist', { attrs: { href: 'https://www.youtube.com/channel/UCj_r_FSVXQFLgZLwSeFBE8g', rel: "noopener", target: "_blank" } }, 'YouTube'),
+            h('a.reflist', { attrs: { href: '/patron' } }, _("Donate")),
             h('a.reflist', { attrs: { href: '/faq' } }, _("FAQ")),
             h('a.reflist', { attrs: { href: '/stats' } }, _("Stats")),
             h('a.reflist', { attrs: { href: '/about' } }, _("About")),
+        ]),
+        h('under-lobby', [
+            h('posts', [
+                h('a.post', { attrs: {href: '/news/shield'} }, [
+                    h('img', { attrs: {src: model["assetURL"] + '/images/shieldwin.png'} }),
+                    h('span.text', [
+                        h('strong', "Aleksschtin on Antichess960 Shield Arena streak"),
+                        h('span', 'No opening theory, only pure instinct and chaos'),
+                    ]),
+                    h('time', '2022.07.15'),
+                ]), 
+                h('a.post', { attrs: {href: '/news/summer'} }, [
+                    h('img', { attrs: {src: model["assetURL"] + '/images/summer.png'} }),
+                    h('span.text', [
+                        h('strong', "Liantichess Summer Marathon Tournament"),
+                        h('span', 'Antichess Marathon #2'),
+                    ]),
+                    h('time', '2022.07.12'),
+                ]),                
+                h('a.post', { attrs: {href: '/news/fools'} }, [
+                    h('img', { attrs: {src: model["assetURL"] + '/images/fools.jpg'} }),
+                    h('span.text', [
+                        h('strong', "[April Fools] Liantichess's database is running out"),
+                        h('span', 'Liantichess Mongodb database is running out of space, It will delete all your games, and all the user accounts, and it will empty the oceans, silence the birds and shut down the sun.'),
+                    ]),
+                    h('time', '2022.04.01'),
+                ]),
+                /*
+                h('a.post', { attrs: {href: '/news/Cold_Winter'} }, [
+                    h('img', { attrs: {src: model.assetURL + '/images/board/ChakArt.jpg'} }),
+                    h('span.text', [
+                        h('strong', "Summary of latest changes"),
+                        h('span', 'Cold winter'),
+                    ]),
+                    h('time', '2021.12.21'),
+                ]),
+                h('a.post', { attrs: {href: '/news/Hot_Summer'} }, [
+                    h('img', { attrs: {src: model.assetURL + '/images/AngryBirds.png'} }),
+                    h('span.text', [
+                        h('strong', "New variant, new engine and more"),
+                        h('span', 'Hot summer'),
+                    ]),
+                    h('time', '2021.09.02'),
+                ]),
+                h('a.post', { attrs: {href: '/news/Empire_Chess_and_Orda_Mirror_Have_Arrived'} }, [
+                    h('img', { attrs: {src: model.assetURL + '/images/Darth-Vader-Comic.jpg'} }),
+                    h('span.text', [
+                        h('strong', "Empire Chess and Orda Mirror Have Arrived!"),
+                        h('span', 'New variants'),
+                    ]),
+                    h('time', '2021.07.30'),
+                ]),
+                h('a.post', { attrs: {href: '/news/Shinobi_Arrives_in_Time_For_the_Sakura_Blossoms'} }, [
+                    h('img', { attrs: {src: model.assetURL + '/icons/shinobi.svg'} }),
+                    h('span.text', [
+                        h('strong', "Shinobi Arrives in Time For the Sakura Blossoms"),
+                        h('span', 'Shinobi Chess has arrived!'),
+                    ]),
+                    h('time', '2021.04.21'),
+                ]),
+                h('a.post', { attrs: {href: '/news/The_Winner_Is_Tasshaq'} }, [
+                    h('img', { attrs: {src: model.assetURL + '/icons/Dobutsu.svg'} }),
+                    h('span.text', [
+                        h('strong', "And the winner is Tasshaq"),
+                        h('span', 'Subjective report on 1st Dōbutsu Tournament'),
+                    ]),
+                    h('time', '2021.03.28'),
+                ]),
+                h('a.post', { attrs: {href: '/news/New_Weapons_Arrived'} }, [
+                    h('img', { attrs: {src: model.assetURL + '/images/RS-24.jpg'} }),
+                    h('span.text', [
+                        h('strong', "Atomic chess and Atomic960 are here"),
+                        h('span', 'New Weapons Arrived'),
+                    ]),
+                    h('time', '2021.03.03'),
+                ]),
+                h('a.post', { attrs: {href: '/news/Short_History_Of_Pychess'} }, [
+                    h('img', { attrs: {src: model.assetURL + '/images/TomatoPlasticSet.svg'} }),
+                    h('span.text', [
+                        h('strong', "And Now for Something Completely Different"),
+                        h('span', 'Short History Of Pychess'),
+                    ]),
+                    h('time', '2021.02.27'),
+                ]),
+                h('a.post', { attrs: {href: '/news/Dobutsu_Tournament'} }, [
+                    h('img', { attrs: {src: model.assetURL + '/icons/Dobutsu.svg'} }),
+                    h('span.text', [
+                        h('strong', "PyChess tournament announcement"),
+                        h('span', 'The 1st Dōbutsu Tournament on PyChess'),
+                    ]),
+                    h('time', '2021.02.04'),
+                ]),
+                */ 
+            ]),
         ]),
         h('under-right', [
             h('a', { attrs: { href: '/players' } }, [ h('counter#u_cnt') ]),

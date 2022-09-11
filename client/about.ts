@@ -10,9 +10,9 @@ export function aboutView(model: PyChessModel): VNode[] {
     ]
     return [
         h('div.about', [
-            h('img.center', { attrs: { src: `${model["asset-url"]}/favicon/favicon.png` } }),
-            h('h1', { attrs: { align: 'center' } }, _('About Liantichess')),
-            h('p', _('Liantichess is a free, open-source antichess server designed to play several antichess variants, derived from pychess.')),
+            h('img.center', { attrs: { src: `${model.assetURL}/favicon/favicon.png` } }),
+            h('h1', { attrs: { align: 'center' } }, _('About pychess')),
+            h('p', _('Pychess is a free, open-source chess server designed to play several chess variants.')),
             h('p', [
                 // TODO Automate the generation of this list
                 _("All supported games on Liantichess can be found "),
@@ -43,7 +43,7 @@ export function aboutView(model: PyChessModel): VNode[] {
             ]),
             h('hr'),
             h('p', [
-                _('To play on Liantichess, you need to have an open and unmarked account on Lichess. '),
+                _('To play on LiAntichess, you need to have an open and unmarked account on Lichess. '),
                 _('Regarding Privacy and Terms of Service, the rules of lichess.org are also applied here. '),
                 h('a', { attrs: { href: 'https://lichess.org/privacy' } }, 'Privacy'),
                 ", ",

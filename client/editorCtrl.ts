@@ -4,7 +4,7 @@ import * as cg from 'chessgroundx/types';
 import * as util from 'chessgroundx/util';
 
 import { _ } from './i18n';
-import { validFen, hasCastling, unpromotedRole, promotedRole, notation } from './chess'
+import { sanitizedFen, validFen, hasCastling, unpromotedRole, promotedRole, notation } from './chess'
 import { diff, calculatePieceNumber } from './material';
 import { iniPieces } from './pieces';
 import { copyBoardToPNG } from './png';
@@ -199,8 +199,8 @@ export class EditorController extends ChessgroundController {
 
     // Remove accidentally selected leading spaces from FEN (mostly may happen on mobile)
     private onPasteFen = (e: ClipboardEvent) => {
-        const data = e.clipboardData?.getData('text') ?? "";
-        (<HTMLInputElement>e.target).value = data.trim();
+        const data = e.clipboardData?.getData('text').trim() ?? "";
+        (<HTMLInputElement>e.target).value = sanitizedFen(this.variant, data);
         e.preventDefault();
         this.setFen(true);
     }
@@ -268,19 +268,20 @@ export class EditorController extends ChessgroundController {
         window.location.assign(this.model["home"] + '/@/Fairy-Stockfish/challenge/' + this.model["variant"] + '?fen=' + fen);
     }
 
-    setFen = (isInput: boolean) => {
-        const fen = document.getElementById('fen') as HTMLInputElement;
-        if (isInput) {
-            this.parts = fen.value.split(' ');
-            this.chessground.set({ fen: fen.value });
-            this.setInvalid(!this.validFen());
+    private onChangeFen = () => {
+        const fenEl = document.getElementById('fen') as HTMLInputElement;
+        const fen = sanitizedFen(this.variant, fenEl.value);
+        fenEl.value = fen;
+        this.parts = fen.split(' ');
+        this.chessground.set({ fen: fen });
+        this.setInvalid(!this.validFen());
 
             if (this.parts.length > 1) {
                 const turn = document.getElementById('turn') as HTMLInputElement;
                 turn.value = (this.parts[1] === 'w') ? 'white' : 'black';
             }
 
-            this.fullfen = fen.value;
+        this.fullfen = fen;
 
             if (hasCastling(this.variant, 'white')) {
                 if (this.parts.length >= 3) {

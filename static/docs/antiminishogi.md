@@ -1,4 +1,3 @@
-
 # ![AntiMinishogi](https://github.com/gbtami/pychess-variants/blob/master/static/icons/minishogi.svg) AntiMinishogi
 
 ![AntiMinishogi](https://github.com/gbtami/pychess-variants/blob/master/static/images/ShogiGuide/Minishogi.png)
