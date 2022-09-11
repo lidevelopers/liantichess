@@ -228,7 +228,7 @@ async def index(request):
         raise web.HTTPNotFound()
 
     variant = request.match_info.get("variant")
-    if (variant is not None) and ((variant not in VARIANTS) and variant != "terminology"):
+    if (variant is not None) and ((variant not in VARIANTS)):
         log.debug("Invalid variant %s in request", variant)
         raise web.HTTPNotFound()
 
@@ -524,7 +524,6 @@ async def index(request):
         render["status"] = tournament.status
         render["title"] = tournament.browser_title
 
-    # variant None indicates terminology.md
     if lang in ("es", "hu", "it", "pt", "fr", "zh", "zh_CN", "zh_TW"):
         locale = ".%s" % lang
     else:
@@ -538,12 +537,9 @@ async def index(request):
         render["icons"] = VARIANT_ICONS
         render["groups"] = VARIANT_GROUPS
 
-        if variant == "terminology":
-            render["variant"] = "docs/terminology%s.html" % locale
-        else:
-            render["variant"] = (
-                "docs/" + ("terminology" if variant is None else variant) + "%s.html" % locale
-            )
+        render["variant"] = (
+            "docs/" + (variant) + "%s.html" % locale
+        )
 
     elif view == "videos":
         tag = request.rel_url.query.get("tags")

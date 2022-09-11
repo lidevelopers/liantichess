@@ -80,154 +80,77 @@ GRANDS = ("xiangqi", "manchu", "grand", "grandhouse", "shako", "janggi")
 CONSERVATIVE_CAPA_FEN = "arnbqkbnrc/pppppppppp/10/10/10/10/PPPPPPPPPP/ARNBQKBNRC w KQkq - 0 1"
 
 VARIANTS = (
-    "chess",
-    "chess960",
-    "crazyhouse",
-    "crazyhouse960",
-    "placement",
-    "atomic",
-    "atomic960",
-    "makruk",
-    "makpong",
-    "cambodian",
-    "sittuyin",
-    "asean",
-    "shogi",
-    "minishogi",
-    "kyotoshogi",
-    "dobutsu",
-    # Gorogoro is superseded by Gorogoro Plus
-    # "gorogoro",
-    "gorogoroplus",
-    "torishogi",
-    "xiangqi",
-    "manchu",
-    "janggi",
-    "minixiangqi",
-    "capablanca",
-    "capablanca960",
-    "capahouse",
-    "capahouse960",
-    # We support to import/store/analyze these variants
-    # but don't support to add them to leaderboard page
-    # "gothic",
-    # "gothhouse",
-    # "embassy",
-    "seirawan",
-    "seirawan960",
-    "shouse",
-    "grand",
-    "grandhouse",
-    "shogun",
-    "shako",
-    "hoppelpoppel",
-    "orda",
-    "synochess",
-    "shinobi",
-    "empire",
-    "ordamirror",
-    "chak",
-    "chennis",
+    "antichess",
+    "losers",
+    "anti_antichess",
+    "antiatomic",
+    "antihouse",
+    "antipawns",
+    "coffee_3check",
+    "coffeerace",
+    "coffeehouse",
+    "coffeehill",
+    "antiplacement",
+    "atomic_giveaway_hill",
 )
 
 VARIANT_ICONS = {
-    "makruk": "Q",
-    "makpong": "O",
-    "sittuyin": ":",
-    "shogi": "K",
-    "janggi": "=",
-    "xiangqi": "|",
-    "chess": "M",
-    "crazyhouse": "+",
-    "placement": "S",
-    "capablanca": "P",
-    "capahouse": "&",
-    "seirawan": "L",
-    "seirawan960": "}",
-    "shouse": "$",
-    "grand": "(",
-    "grandhouse": "*",
-    "gothic": "P",
-    "gothhouse": "&",
-    "embassy": "P",
-    "minishogi": "6",
-    "dobutsu": "8",
-    "gorogoro": "🐱",
-    "gorogoroplus": "🐱",
-    "torishogi": "🐦",
-    "cambodian": "!",
-    "shako": "9",
-    "minixiangqi": "7",
-    "chess960": "V",
-    "capablanca960": ",",
-    "capahouse960": "'",
-    "crazyhouse960": "%",
-    "kyotoshogi": ")",
-    "shogun": "-",
-    "orda": "R",
-    "synochess": "_",
-    "hoppelpoppel": "`",
-    "manchu": "{",
-    "atomic": "~",
-    "atomic960": "\\",
-    "shinobi": "🐢",
-    "empire": "♚",
-    "ordamirror": "◩",
-    "asean": "♻",
-    "chak": "🐬",
-    "chennis": "🎾",
+    "antichess": "Q",
+    "antichess960": "O",
+    "losers": ":",
+    "losers960": "K",
+    "anti_antichess": "=",
+    "anti_antichess960": "|",
+    "antiatomic": "M",
+    "antiatomic960": "+",
+    "antihouse": "S",
+    "antihouse960": "P",
+    "antipawns": "&",
+    "coffee_3check": "L",
+    "coffee_3check960": "}",
+    "coffeerace": "$",
+    "coffeehouse": "(",
+    "coffeehouse960": "*",
+    "coffeehill": "P",
+    "coffeehill960": "&",
+    "antiplacement": "P",
+    "atomic_giveaway_hill": "6",
+    "atomic_giveaway_hill960": "8",
 }
 
 VARIANT_960_TO_PGN = {
-    "chess": "Chess960",
-    "capablanca": "Caparandom",
-    "capahouse": "Capahouse960",
-    "crazyhouse": "Crazyhouse",  # to let lichess import work
-    "atomic": "Atomic",  # to let lichess import work
-    "seirawan": "Seirawan960",
-    # some early game is accidentally saved as 960 in mongodb
-    "shogi": "Shogi",
-    "sittuyin": "Sittuyin",
-    "makruk": "Makruk",
-    "placement": "Placement",
-    "grand": "Grand",
+    "antichess": "Antichess",
+    "losers": "Losers960",
+    "anti_antichess": "Anti_antichess960",
+    "antiatomic": "Antiatomic960",
+    "antihouse": "Antihouse960",
+    "antipawns": "Antipawns960",
+    "coffee_3check": "Coffee_3check960",
+    "coffeerace": "Coffeerace960",
+    "coffeehouse": "Coffeehouse960",
+    "coffeehill": "Coffeehill960",
+    "antiplacement": "Antiplacement960",
+    "atomic_giveaway_hill": "Atomic_giveaway_hill960",
 }
 
 CATEGORIES = {
-    "chess": (
-        "chess",
-        "chess960",
-        "crazyhouse",
-        "crazyhouse960",
-        "placement",
-        "atomic",
-        "atomic960",
+    "antichess": (
+        "antichess",
+        "antichess960",
+        "losers",
+        "losers960",
+        "anti_antichess",
+        "anti_antichess960",
     ),
-    "fairy": (
-        "capablanca",
-        "capablanca960",
-        "capahouse",
-        "capahouse960",
-        "seirawan",
-        "seirawan960",
-        "shouse",
-        "grand",
-        "grandhouse",
-        "shako",
-        "shogun",
-        "hoppelpoppel",
+    "anti": (
+        "antiatomic",
+        "antiatomic960",
+        "antihouse",
+        "antihouse960",
+        "antipawns",
     ),
-    "army": ("orda", "synochess", "shinobi", "empire", "ordamirror", "chak", "chennis"),
-    "makruk": ("makruk", "makpong", "cambodian", "sittuyin", "asean"),
-    "shogi": (
-        "shogi",
-        "minishogi",
-        "kyotoshogi",
-        "dobutsu",
-        "gorogoroplus",
-        "torishogi",
-    ),
-    "xiangqi": ("xiangqi", "manchu", "janggi", "minixiangqi"),
+    "coffee": ("coffee_3check", "coffee_3check960", "coffeerace", "coffeehouse", "coffeehouse960", "coffeehill", "coffeehill960"),
+    "misc": ("antiplacement", "atomic_giveaway_hill", "atomic_giveaway_hill960"),
 }
 
 VARIANT_GROUPS = {}
@@ -241,29 +164,56 @@ TROPHIES = {
     "top50": (static_url("images/trophy/Fancy-Gold-Cup.png"), "Top 50!"),
     "top100": (static_url("images/trophy/Gold-Cup.png"), "Top 100!"),
     "shield": (static_url("images/trophy/shield-gold.png"), "Shield"),
-    # some example custom trophy from lichess
-    "acwc19": (static_url("images/trophy/acwc19.png"), "World Champion 2019"),
-    "3wc21": (static_url("images/trophy/3wc21.png"), "World Champion 2021"),
+    "acwc21": (static_url("images/trophy/acwc21.png"), "2021 Champion"),
+    "acwc22": (static_url("images/trophy/acwc22.png"), "2022 Champion"),
+    "acswc22": (static_url("images/trophy/acswc22.png"), "Supercup 2022 Champion"),    
+    "wacwc22": (static_url("images/trophy/wacwc22.png"), "Woman Champion 2022"),
+    "developer": (static_url("images/trophy/developer.png"), "Developer"),
+    "moderator": (static_url("images/trophy/moderator.png"), "Moderator"),
+    "spmarathon15": (static_url("images/trophy/marathon15.png"), "2022 Spring Marathon Top 15!"),
+    "spmarathon5": (static_url("images/trophy/marathon5.png"), "2022 Spring Marathon Top 5!"),
+    "spmarathon1": (static_url("images/trophy/marathon1.png"), "2022 Spring Marathon Winner!"),
 }
+
+TROPHY_KIND = (
+    "liantichess",
+    "antichess",
+    "antichess960",
+    "losers",
+    "losers960",
+    "anti_antichess",
+    "anti_antichess960",
+    "antiatomic",
+    "antiatomic960",
+    "antihouse",
+    "antihouse960",
+    "antipawns",
+    "coffee_3check",
+    "coffee_3check960",
+    "coffeerace",
+    "coffeehouse",
+    "coffeehouse960",
+    "coffeehill",
+    "coffeehill960",
+    "antiplacement",
+    "atomic_giveaway_hill",
+    "atomic_giveaway_hill960",
+)
 
 
 def variant_display_name(variant):
-    if variant == "seirawan":
-        return "S-CHESS"
-    elif variant == "seirawan960":
-        return "S-CHESS960"
-    elif variant == "shouse":
-        return "S-HOUSE"
-    elif variant == "cambodian":
-        return "OUK CHAKTRANG"
-    elif variant == "ordamirror":
-        return "ORDA MIRROR"
-    elif variant == "gorogoroplus":
-        return "GOROGORO+"
-    elif variant == "kyotoshogi":
-        return "KYOTO SHOGI"
-    elif variant == "torishogi":
-        return "TORI SHOGI"
+    if variant == "anti_antichess":
+        return "ANTI-ANTICHESS"
+    elif variant == "anti_antichess960":
+        return "ANTI-ANTICHESS960"
+    elif variant == "coffee_3check":
+        return "COFFEE-3CHECK"
+    elif variant == "coffee_3check960":
+        return "COFFEE-3CHECK960"
+    elif variant == "atomic_giveaway_hill":
+        return "ATOMIC-GIVEAWAY-HILL"
+    elif variant == "atomic_giveaway_hill960":
+        return "ATOMIC-GIVEAWAY-HILL960"
     else:
         return variant.upper()
 
