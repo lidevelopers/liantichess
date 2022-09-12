@@ -28,7 +28,7 @@ RESERVED_USERS = (
     "Fairy-Stockfish",
     "Discord-Relay",
     "Invite-friend",
-    "PyChess",
+    "Liantichess",
 )
 
 

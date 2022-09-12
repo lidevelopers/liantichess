@@ -214,7 +214,7 @@ async def get_scheduled_tournaments(app, nb_max=30):
     async for doc in cursor:
         if (
             doc["status"] in (T_CREATED, T_STARTED)
-            and doc["createdBy"] == "PyChess"
+            and doc["createdBy"] == "Liantichess"
             and doc.get("fr", "") != ""
         ):
             nb_tournament += 1

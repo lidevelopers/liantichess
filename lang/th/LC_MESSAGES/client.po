@@ -133,10 +133,10 @@ msgstr "ซอร์สโค้ดของเว็บไซต์นี้ส
 
 #: ../client/about.ts:117
 msgid ""
-"To play on PyChess, you need to have an open and unmarked account on "
+"To play on Liantichess, you need to have an open and unmarked account on "
 "Lichess. "
 msgstr ""
-"ในการที่จะเล่นบน PyChess ได้ คุณจะต้องมีบัญชี Lichess "
+"ในการที่จะเล่นบน Liantichess ได้ คุณจะต้องมีบัญชี Lichess "
 "ที่เปิดอยู่และไม่ถูกห้ามเล่นที่นั่น"
 
 #: ../client/about.ts:118
@@ -1117,8 +1117,8 @@ msgid "About"
 msgstr "เกี่ยวกับ"
 
 #: ../client/lobby.ts:924
-msgid "Fairy-Stockfish on PyChess"
-msgstr "Fairy-Stockfish บน PyChess"
+msgid "Fairy-Stockfish on Liantichess"
+msgstr "Fairy-Stockfish บน Liantichess"
 
 #: ../client/lobby.ts:925
 msgid "NNUE Everywhere"
@@ -1133,8 +1133,8 @@ msgid "Serving a New Variant"
 msgstr "ขอเสิร์ฟเกมใหม่ให้ทุกท่าน"
 
 #: ../client/lobby.ts:940
-msgid "Christmas gift from PyChess"
-msgstr "ของขวัญคริสต์มาสจาก PyChess"
+msgid "Christmas gift from Liantichess"
+msgstr "ของขวัญคริสต์มาสจาก Liantichess"
 
 #: ../client/lobby.ts:941
 msgid "Merry Chak-mas!"

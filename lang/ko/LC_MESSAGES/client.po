@@ -120,7 +120,7 @@ msgstr "서버 소스코드 사용가능"
 
 #: ../client/about.ts:117
 msgid ""
-"To play on PyChess, you need to have an open and unmarked account on "
+"To play on Liantichess, you need to have an open and unmarked account on "
 "Lichess. "
 msgstr "Pychess를 플레이하려면, 열려 있고 표시되지 않은 당신의 계정이 Lichess에 있어야 합니다."
 
@@ -1083,7 +1083,7 @@ msgid "About"
 msgstr "더 알아보기"
 
 #: ../client/lobby.ts:924
-msgid "Fairy-Stockfish on PyChess"
+msgid "Fairy-Stockfish on Liantichess"
 msgstr ""
 
 #: ../client/lobby.ts:925
@@ -1099,7 +1099,7 @@ msgid "Serving a New Variant"
 msgstr ""
 
 #: ../client/lobby.ts:940
-msgid "Christmas gift from PyChess"
+msgid "Christmas gift from Liantichess"
 msgstr ""
 
 #: ../client/lobby.ts:941

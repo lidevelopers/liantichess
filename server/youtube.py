@@ -11,7 +11,7 @@ class Youtube:
         # return [self.streams[streamer] for streamer in self.streams if "pychess" in self.streams[streamer]["title"].lower()]
         return [self.streams[streamer] for streamer in self.streams]
 
-    def add(self, channel, username="unknown", title="PyChess stream"):
+    def add(self, channel, username="unknown", title="Liantichess stream"):
         self.streams[channel] = {
             "username": YOUTUBE_STREAMERS.get(channel, username),
             "streamer": channel,

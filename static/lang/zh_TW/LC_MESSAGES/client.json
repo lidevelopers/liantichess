@@ -12,7 +12,7 @@
     "For move generation, validation, analysis, and engine play, we use ": "生成，驗證，分析棋步和電腦對局功能一律使用",
     "On client side, the user interface of the game board is based on ": "在客戶端，棋盤的用戶界面使用",
     "The source code of the server is available on ": "本服務器的源碼投稿在",
-    "To play on PyChess, you need to have an open and unmarked account on Lichess. ": "使用PyChess之前，你必需先擁用一個Lichess帳號。",
+    "To play on Liantichess, you need to have an open and unmarked account on Lichess. ": "使用Liantichess之前，你必需先擁用一個Lichess帳號。",
     "Regarding Privacy and Terms of Service, the rules of lichess.org are also applied here. ": "關於隱私和服務條款，我們向lichess.org借之而行。",
     "Variant": "棋類",
     "in local browser": "在本地瀏覽器",

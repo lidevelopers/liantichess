@@ -1,5 +1,5 @@
 {
-    "About pychess": "PyChessについて",
+    "About pychess": "Liantichessについて",
     "Variant": "将棋類",
     "Initial position": "開始局面",
     "Advantage": "優勢",
@@ -141,7 +141,7 @@
     "Donate": "寄付",
     "FAQ": "よくある質問",
     "Stats": "統計データ",
-    "About": "PyChess について",
+    "About": "Liantichess について",
     "Thank you for your support!": "いつも応援してくれてありがとうございます！",
     "Invalid PGN": "無効な PGN",
     "Paste the PGN text here": "ここにPGN形式の棋譜をペースト",

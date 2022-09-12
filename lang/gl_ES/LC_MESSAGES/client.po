@@ -134,7 +134,7 @@ msgstr "O código fonte do servidor atópase dispoñible en"
 
 #: ../client/about.ts:117
 msgid ""
-"To play on PyChess, you need to have an open and unmarked account on "
+"To play on Liantichess, you need to have an open and unmarked account on "
 "Lichess. "
 msgstr ""
 

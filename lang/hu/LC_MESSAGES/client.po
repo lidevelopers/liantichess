@@ -128,7 +128,7 @@ msgstr "A szerver forráskódja elérhető itt "
 
 #: ../client/about.ts:117
 msgid ""
-"To play on PyChess, you need to have an open and unmarked account on "
+"To play on Liantichess, you need to have an open and unmarked account on "
 "Lichess. "
 msgstr ""
 "A pychess-en való játékhoz szükséges egy nem lezárt, nem megjelölt lichess "
@@ -1147,8 +1147,8 @@ msgid "About"
 msgstr "Névjegy"
 
 #: ../client/lobby.ts:924
-msgid "Fairy-Stockfish on PyChess"
-msgstr "Fairy-Stockfish a PyChess-en"
+msgid "Fairy-Stockfish on Liantichess"
+msgstr "Fairy-Stockfish a Liantichess-en"
 
 #: ../client/lobby.ts:925
 msgid "NNUE Everywhere"
@@ -1163,8 +1163,8 @@ msgid "Serving a New Variant"
 msgstr "Új sakk variáns"
 
 #: ../client/lobby.ts:940
-msgid "Christmas gift from PyChess"
-msgstr "PyChess ajándék Karácsonyra"
+msgid "Christmas gift from Liantichess"
+msgstr "Liantichess ajándék Karácsonyra"
 
 #: ../client/lobby.ts:941
 msgid "Merry Chak-mas!"

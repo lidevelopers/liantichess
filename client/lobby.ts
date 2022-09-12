@@ -889,96 +889,30 @@ export function lobbyView(model: PyChessModel): VNode[] {
         ]),
         h('under-lobby', [
             h('posts', [
-                h('a.post', { attrs: {href: '/news/NNUE_Everywhere'} }, [
-                    h('img', { attrs: {src: model.assetURL + '/images/Weights-nn-62ef826d1a6d.png'} }),
+                h('a.post', { attrs: {href: '/news/shield'} }, [
+                    h('img', { attrs: {src: model["assetURL"] + '/images/shieldwin.png'} }),
                     h('span.text', [
-                        h('strong', _("Fairy-Stockfish on PyChess")),
-                        h('span', _('NNUE Everywhere')),
+                        h('strong', "Aleksschtin on Antichess960 Shield Arena streak"),
+                        h('span', 'No opening theory, only pure instinct and chaos'),
                     ]),
-                    h('time', '2022.08.04'),
-                ]),
-                h('a.post', { attrs: {href: '/news/Serving_a_New_Variant'} }, [
-                    h('img', { attrs: {src: model.assetURL + '/images/ChessTennis.jpg'} }),
+                    h('time', '2022.07.15'),
+                ]), 
+                h('a.post', { attrs: {href: '/news/summer'} }, [
+                    h('img', { attrs: {src: model["assetURL"] + '/images/summer.png'} }),
                     h('span.text', [
-                        h('strong', _("Tennis and chess")),
-                        h('span', _('Serving a New Variant')),
+                        h('strong', "Liantichess Summer Marathon Tournament"),
+                        h('span', 'Antichess Marathon #2'),
                     ]),
-                    h('time', '2022.02.01'),
-                ]),
-                h('a.post', { attrs: {href: '/news/Merry_Chakmas'} }, [
-                    h('img', { attrs: {src: model.assetURL + '/images/QuetzalinTikal.png'} }),
+                    h('time', '2022.07.12'),
+                ]),                
+                h('a.post', { attrs: {href: '/news/fools'} }, [
+                    h('img', { attrs: {src: model["assetURL"] + '/images/fools.jpg'} }),
                     h('span.text', [
-                        h('strong', _("Christmas gift from PyChess")),
-                        h('span', _('Merry Chak-mas!')),
+                        h('strong', "[April Fools] Liantichess's database is running out"),
+                        h('span', 'Liantichess Mongodb database is running out of space, It will delete all your games, and all the user accounts, and it will empty the oceans, silence the birds and shut down the sun.'),
                     ]),
-                    h('time', '2021.12.24'),
-                ]),
-                /*
-                h('a.post', { attrs: {href: '/news/Cold_Winter'} }, [
-                    h('img', { attrs: {src: model.assetURL + '/images/board/ChakArt.jpg'} }),
-                    h('span.text', [
-                        h('strong', "Summary of latest changes"),
-                        h('span', 'Cold winter'),
-                    ]),
-                    h('time', '2021.12.21'),
-                ]),
-                h('a.post', { attrs: {href: '/news/Hot_Summer'} }, [
-                    h('img', { attrs: {src: model.assetURL + '/images/AngryBirds.png'} }),
-                    h('span.text', [
-                        h('strong', "New variant, new engine and more"),
-                        h('span', 'Hot summer'),
-                    ]),
-                    h('time', '2021.09.02'),
-                ]),
-                h('a.post', { attrs: {href: '/news/Empire_Chess_and_Orda_Mirror_Have_Arrived'} }, [
-                    h('img', { attrs: {src: model.assetURL + '/images/Darth-Vader-Comic.jpg'} }),
-                    h('span.text', [
-                        h('strong', "Empire Chess and Orda Mirror Have Arrived!"),
-                        h('span', 'New variants'),
-                    ]),
-                    h('time', '2021.07.30'),
-                ]),
-                h('a.post', { attrs: {href: '/news/Shinobi_Arrives_in_Time_For_the_Sakura_Blossoms'} }, [
-                    h('img', { attrs: {src: model.assetURL + '/icons/shinobi.svg'} }),
-                    h('span.text', [
-                        h('strong', "Shinobi Arrives in Time For the Sakura Blossoms"),
-                        h('span', 'Shinobi Chess has arrived!'),
-                    ]),
-                    h('time', '2021.04.21'),
-                ]),
-                h('a.post', { attrs: {href: '/news/The_Winner_Is_Tasshaq'} }, [
-                    h('img', { attrs: {src: model.assetURL + '/icons/Dobutsu.svg'} }),
-                    h('span.text', [
-                        h('strong', "And the winner is Tasshaq"),
-                        h('span', 'Subjective report on 1st Dōbutsu Tournament'),
-                    ]),
-                    h('time', '2021.03.28'),
-                ]),
-                h('a.post', { attrs: {href: '/news/New_Weapons_Arrived'} }, [
-                    h('img', { attrs: {src: model.assetURL + '/images/RS-24.jpg'} }),
-                    h('span.text', [
-                        h('strong', "Atomic chess and Atomic960 are here"),
-                        h('span', 'New Weapons Arrived'),
-                    ]),
-                    h('time', '2021.03.03'),
-                ]),
-                h('a.post', { attrs: {href: '/news/Short_History_Of_Pychess'} }, [
-                    h('img', { attrs: {src: model.assetURL + '/images/TomatoPlasticSet.svg'} }),
-                    h('span.text', [
-                        h('strong', "And Now for Something Completely Different"),
-                        h('span', 'Short History Of Pychess'),
-                    ]),
-                    h('time', '2021.02.27'),
-                ]),
-                h('a.post', { attrs: {href: '/news/Dobutsu_Tournament'} }, [
-                    h('img', { attrs: {src: model.assetURL + '/icons/Dobutsu.svg'} }),
-                    h('span.text', [
-                        h('strong', "PyChess tournament announcement"),
-                        h('span', 'The 1st Dōbutsu Tournament on PyChess'),
-                    ]),
-                    h('time', '2021.02.04'),
-                ]),
-                */ 
+                    h('time', '2022.04.01'),
+                ]), 
             ]),
         ]),
         h('under-right', [

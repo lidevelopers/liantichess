@@ -32,7 +32,7 @@ class User:
     ):
         self.app = app
         self.db = app["db"] if "db" in app else None
-        self.bot = False if username == "PyChessBot" else bot
+        self.bot = False if username == "LiantichessBot" else bot
         self.anon = anon
         if username is None:
             self.anon = True

@@ -22,8 +22,8 @@ VIDEO_TAGS = (
 VIDEOS = [
     {
         "_id": "Vyc4Llxgke8",
-        "title": "Introduction to the PyChess Website",
-        "author": "PyChess",
+        "title": "Introduction to the Liantichess Website",
+        "author": "Liantichess",
         "tags": ["Introduction"],
         "target": "beginner",
         "duration": "20:48",
@@ -31,7 +31,7 @@ VIDEOS = [
     {
         "_id": "WmMw97hp8C0",
         "title": "Makpong, Ouk Chatrang (Cambodian Chess), and ASEAN Chess - How to play",
-        "author": "PyChess",
+        "author": "Liantichess",
         "tags": ["Howto", "Makruk"],
         "target": "beginner",
         "duration": "5:26",
@@ -39,7 +39,7 @@ VIDEOS = [
     {
         "_id": "LWl8nMYrONM",
         "title": "How to checkmate with 2 knights (in Hoppel-Poppel)",
-        "author": "PyChess",
+        "author": "Liantichess",
         "tags": ["Endgame", "Puzzle"],
         "target": "intermediate",
         "duration": "13:36",
@@ -47,7 +47,7 @@ VIDEOS = [
     {
         "_id": "wzxgy2qJMwM",
         "title": "The weirdest bug in the history of pychess (how to play placement chess)",
-        "author": "PyChess",
+        "author": "Liantichess",
         "tags": ["Placement", "Opening", "Puzzle"],
         "target": "intermediate",
         "duration": "14:20",
@@ -55,7 +55,7 @@ VIDEOS = [
     {
         "_id": "uyNsTgo8ylI",
         "title": "Makruk (Thai Chess) - How to play",
-        "author": "PyChess",
+        "author": "Liantichess",
         "tags": ["Howto", "Makruk"],
         "target": "beginner",
         "duration": "6:19",
@@ -63,7 +63,7 @@ VIDEOS = [
     {
         "_id": "p1WEdE3TdM8",
         "title": "如果你一直想找個集分析、對奕、競技於一身的網站，那這隻影片將帶給你Pychess這個好地方。",
-        "author": "PyChess",
+        "author": "Liantichess",
         "tags": ["Introduction"],
         "target": "beginner",
         "duration": "30:05",
@@ -71,7 +71,7 @@ VIDEOS = [
     {
         "_id": "0HqKri2R5ls",
         "title": "Empire Chess - How to play",
-        "author": "PyChess",
+        "author": "Liantichess",
         "tags": ["Howto"],
         "target": "beginner",
         "duration": "6:32",
@@ -79,7 +79,7 @@ VIDEOS = [
     {
         "_id": "Ap4mGkR8HDA",
         "title": "Orda Chess (and Mirror) - How to play",
-        "author": "PyChess",
+        "author": "Liantichess",
         "tags": ["Howto"],
         "target": "beginner",
         "duration": "11:15",
@@ -87,7 +87,7 @@ VIDEOS = [
     {
         "_id": "5f9QKK7cm20",
         "title": "Tori Shogi - How to play",
-        "author": "PyChess",
+        "author": "Liantichess",
         "tags": ["Howto"],
         "target": "beginner",
         "duration": "12:14",
@@ -95,7 +95,7 @@ VIDEOS = [
     {
         "_id": "YH63AlxpXkg",
         "title": "Shogi - How to play (using internationalized piece set)",
-        "author": "PyChess",
+        "author": "Liantichess",
         "tags": ["Howto", "Shogi"],
         "target": "beginner",
         "duration": "17:40",
@@ -103,7 +103,7 @@ VIDEOS = [
     {
         "_id": "KDkF2dEt41g",
         "title": "Janggi (Korean Chess) - How to play (using internationalized piece set)",
-        "author": "PyChess",
+        "author": "Liantichess",
         "tags": ["Howto", "Janggi"],
         "target": "beginner",
         "duration": "17:13",
@@ -111,7 +111,7 @@ VIDEOS = [
     {
         "_id": "e4jYQ0UMmGk",
         "title": "Hybrid Piece Basics",
-        "author": "PyChess",
+        "author": "Liantichess",
         "tags": ["Fundamentals", "Tactics"],
         "target": "beginner",
         "duration": "9:02",
@@ -119,7 +119,7 @@ VIDEOS = [
     {
         "_id": "WRk3ZbX2bpA",
         "title": "Shogun Chess - How to play",
-        "author": "PyChess",
+        "author": "Liantichess",
         "tags": ["Howto"],
         "target": "beginner",
         "duration": "4:37",
@@ -127,7 +127,7 @@ VIDEOS = [
     {
         "_id": "E6AzOO4-340",
         "title": "S-Chess (Seiwaran Chess, SHARPER Chess) - How to play",
-        "author": "PyChess",
+        "author": "Liantichess",
         "tags": ["Howto", "S-Chess"],
         "target": "beginner",
         "duration": "3:02",
@@ -135,7 +135,7 @@ VIDEOS = [
     {
         "_id": "CRrncO-w524",
         "title": "Grand Chess - How to play",
-        "author": "PyChess",
+        "author": "Liantichess",
         "tags": ["Howto"],
         "target": "beginner",
         "duration": "2:06",
@@ -143,7 +143,7 @@ VIDEOS = [
     {
         "_id": "HNYWioiltH0",
         "title": "Capablanca Chess - How to Play",
-        "author": "PyChess",
+        "author": "Liantichess",
         "tags": ["Howto"],
         "target": "beginner",
         "duration": "6:18",
@@ -151,7 +151,7 @@ VIDEOS = [
     {
         "_id": "boT1qyDA5RA",
         "title": "Xiangqi Basics",
-        "author": "PyChess",
+        "author": "Liantichess",
         "tags": ["Xiangqi", "Opening", "Endgame"],
         "target": "beginner",
         "duration": "16:53",
@@ -159,7 +159,7 @@ VIDEOS = [
     {
         "_id": "5EDG5RP8OZ8",
         "title": "Xiangqi (Chinese Chess) - How to play (Using Internationalized Piece Set)",
-        "author": "PyChess",
+        "author": "Liantichess",
         "tags": ["Xiangqi", "Howto"],
         "target": "beginner",
         "duration": "8:13",

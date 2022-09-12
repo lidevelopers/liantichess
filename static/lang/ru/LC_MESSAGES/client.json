@@ -12,7 +12,7 @@
     "For move generation, validation, analysis, and engine play, we use ": "Для генерации ходов, проверки, анализа и игры с движком мы используем",
     "On client side, the user interface of the game board is based on ": "На стороне клиента пользовательский интерфейс игровой доски основан на",
     "The source code of the server is available on ": "Исходный код сервера доступен на",
-    "To play on PyChess, you need to have an open and unmarked account on Lichess. ": "Чтобы играть на PyChess, необходимо иметь открытую учетную запись на Lichess, не уличенную в мошенничестве.",
+    "To play on Liantichess, you need to have an open and unmarked account on Lichess. ": "Чтобы играть на Liantichess, необходимо иметь открытую учетную запись на Lichess, не уличенную в мошенничестве.",
     "Regarding Privacy and Terms of Service, the rules of lichess.org are also applied here. ": "Что касается конфиденциальности и условий обслуживания, здесь также применяются правила lichess.org.",
     "Variant": "Вариант",
     "in local browser": "в браузере",

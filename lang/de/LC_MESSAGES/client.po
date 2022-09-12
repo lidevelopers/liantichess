@@ -140,10 +140,10 @@ msgstr "Der Quellcode des Servers ist verfügbar auf"
 
 #: ../client/about.ts:117
 msgid ""
-"To play on PyChess, you need to have an open and unmarked account on "
+"To play on Liantichess, you need to have an open and unmarked account on "
 "Lichess. "
 msgstr ""
-"Um auf PyChess spielen zu können benötigst du ein offenes und unmarkiertes "
+"Um auf Liantichess spielen zu können benötigst du ein offenes und unmarkiertes "
 "Lichess Konto."
 
 #: ../client/about.ts:118
@@ -1164,8 +1164,8 @@ msgid "About"
 msgstr "Über"
 
 #: ../client/lobby.ts:924
-msgid "Fairy-Stockfish on PyChess"
-msgstr "Fairy-Stockfish auf PyChess"
+msgid "Fairy-Stockfish on Liantichess"
+msgstr "Fairy-Stockfish auf Liantichess"
 
 #: ../client/lobby.ts:925
 msgid "NNUE Everywhere"
@@ -1180,8 +1180,8 @@ msgid "Serving a New Variant"
 msgstr "Eine neue Variante schlägt auf"
 
 #: ../client/lobby.ts:940
-msgid "Christmas gift from PyChess"
-msgstr "Weihnachtsgeschenk von PyChess"
+msgid "Christmas gift from Liantichess"
+msgstr "Weihnachtsgeschenk von Liantichess"
 
 #: ../client/lobby.ts:941
 msgid "Merry Chak-mas!"

@@ -23,8 +23,8 @@ msgid "404 GAME NOT FOUND"
 msgstr "404 GAME NOT FOUND"
 
 #: ../templates/404.html:21
-msgid "Sorry, but not all games saved on PyChess-Variants server."
-msgstr "Sorry, but not all games saved on PyChess-Variants server."
+msgid "Sorry, but not all games saved on Liantichess-Variants server."
+msgstr "Sorry, but not all games saved on Liantichess-Variants server."
 
 #: ../templates/404.html:22
 msgid "Probably it was abandoned or stopped before the third move."
@@ -97,8 +97,8 @@ msgid "About"
 msgstr "About"
 
 #: ../templates/template.html:75
-msgid "Original PyChess site"
-msgstr "Original PyChess site"
+msgid "Original Liantichess site"
+msgstr "Original Liantichess site"
 
 #: ../templates/template.html:78
 msgid "Login with Lichess"

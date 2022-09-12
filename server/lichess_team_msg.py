@@ -27,7 +27,7 @@ async def lichess_team_msg(app):
         print("No more lichess team msg for today!")
         return
 
-    team_id = "Liantichess.herokuapp.com"
+    team_id = "liantichessherokuappcom"
     msg = upcoming_tournaments_msgs(app["tournaments"])
     print(msg)
 

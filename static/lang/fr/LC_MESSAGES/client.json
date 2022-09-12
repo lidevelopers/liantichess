@@ -12,7 +12,7 @@
     "For move generation, validation, analysis, and engine play, we use ": "Pour la génération et validation des coups, l'analyse et le jeu contre l'ordinateur on utilise",
     "On client side, the user interface of the game board is based on ": "Du côté client, l'interface de jeu est basée sur",
     "The source code of the server is available on ": "Le code source du serveur est disponible à",
-    "To play on PyChess, you need to have an open and unmarked account on Lichess. ": "Pour jouer sur PyChess, il faut un compte sur Lichess ouvert et non-marqué",
+    "To play on Liantichess, you need to have an open and unmarked account on Lichess. ": "Pour jouer sur Liantichess, il faut un compte sur Lichess ouvert et non-marqué",
     "Regarding Privacy and Terms of Service, the rules of lichess.org are also applied here. ": "En ce qui concerne la confidentialité et les conditions d'utilisation, nous appliquons ici celles de lichess.org.",
     "Variant": "Variante",
     "in local browser": "dans le navigateur local",

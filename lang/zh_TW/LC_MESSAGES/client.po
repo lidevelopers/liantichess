@@ -114,9 +114,9 @@ msgstr "本服務器的源碼投稿在"
 
 #: ../client/about.ts:117
 msgid ""
-"To play on PyChess, you need to have an open and unmarked account on "
+"To play on Liantichess, you need to have an open and unmarked account on "
 "Lichess. "
-msgstr "使用PyChess之前，你必需先擁用一個Lichess帳號。"
+msgstr "使用Liantichess之前，你必需先擁用一個Lichess帳號。"
 
 #: ../client/about.ts:118
 msgid ""
@@ -1077,7 +1077,7 @@ msgid "About"
 msgstr "關於我們"
 
 #: ../client/lobby.ts:924
-msgid "Fairy-Stockfish on PyChess"
+msgid "Fairy-Stockfish on Liantichess"
 msgstr ""
 
 #: ../client/lobby.ts:925
@@ -1093,7 +1093,7 @@ msgid "Serving a New Variant"
 msgstr ""
 
 #: ../client/lobby.ts:940
-msgid "Christmas gift from PyChess"
+msgid "Christmas gift from Liantichess"
 msgstr ""
 
 #: ../client/lobby.ts:941

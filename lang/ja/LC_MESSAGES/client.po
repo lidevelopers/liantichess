@@ -66,7 +66,7 @@ msgstr ""
 
 #: ../client/about.ts:18
 msgid "About pychess"
-msgstr "PyChessについて"
+msgstr "Liantichessについて"
 
 #: ../client/about.ts:19
 msgid ""
@@ -103,7 +103,7 @@ msgstr ""
 
 #: ../client/about.ts:117
 msgid ""
-"To play on PyChess, you need to have an open and unmarked account on "
+"To play on Liantichess, you need to have an open and unmarked account on "
 "Lichess. "
 msgstr ""
 
@@ -1061,10 +1061,10 @@ msgstr "統計データ"
 
 #: ../client/lobby.ts:917
 msgid "About"
-msgstr "PyChess について"
+msgstr "Liantichess について"
 
 #: ../client/lobby.ts:924
-msgid "Fairy-Stockfish on PyChess"
+msgid "Fairy-Stockfish on Liantichess"
 msgstr ""
 
 #: ../client/lobby.ts:925
@@ -1080,7 +1080,7 @@ msgid "Serving a New Variant"
 msgstr ""
 
 #: ../client/lobby.ts:940
-msgid "Christmas gift from PyChess"
+msgid "Christmas gift from Liantichess"
 msgstr ""
 
 #: ../client/lobby.ts:941

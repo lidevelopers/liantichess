@@ -110,7 +110,7 @@ msgstr ""
 
 #: ../client/about.ts:113
 msgid ""
-"To play on PyChess, you need to have an open and unmarked account on "
+"To play on Liantichess, you need to have an open and unmarked account on "
 "Lichess. "
 msgstr ""
 
