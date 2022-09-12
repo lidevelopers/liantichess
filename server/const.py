@@ -178,9 +178,9 @@ TROPHIES = {
     "wacwc22": (static_url("images/trophy/wacwc22.png"), "Woman Champion 2022"),
     "developer": (static_url("images/trophy/developer.png"), "Developer"),
     "moderator": (static_url("images/trophy/moderator.png"), "Moderator"),
-    "spmarathon15": (static_url("images/trophy/marathon15.png"), "2022 Spring Marathon Top 15!"),
-    "spmarathon5": (static_url("images/trophy/marathon5.png"), "2022 Spring Marathon Top 5!"),
-    "spmarathon1": (static_url("images/trophy/marathon1.png"), "2022 Spring Marathon Winner!"),
+    "marathon15": (static_url("images/trophy/marathon15.png"), "2022 Spring Marathon Top 15!"),
+    "marathon5": (static_url("images/trophy/marathon5.png"), "2022 Spring Marathon Top 5!"),
+    "marathon1": (static_url("images/trophy/marathon1.png"), "2022 Spring Marathon Winner!"),
 }
 
 TROPHY_KIND = (

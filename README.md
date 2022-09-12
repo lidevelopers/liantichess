@@ -1,6 +1,5 @@
 # [Liantichess](https://liantichess.herokuapp.com)
 
-[![Python-CI](https://github.com/SriMethan/liantichess/actions/workflows/ci.yml/badge.svg)](https://github.com/SriMethan/liantichess/actions/workflows/ci.yml)
 [![Nodejs-CI](https://github.com/SriMethan/liantichess/actions/workflows/nodejs.yml/badge.svg)](https://github.com/SriMethan/liantichess/actions/workflows/nodejs.yml)
 [![Liantichess](https://img.shields.io/badge/Liantichess-%40players-blue.svg)](https://liantichess.herokuapp.com/players)
 
