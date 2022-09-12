@@ -13,7 +13,6 @@ import { timeControlStr } from './view';
 import { notify } from './notification';
 import { PyChessModel } from "./types";
 import { MsgChat, MsgFullChat } from "./messages";
-import { variantPanels } from './lobby/layer1';
 import { Stream, Spotlight, MsgInviteCreated, MsgHostCreated, MsgGetSeeks, MsgNewGame, MsgGameInProgress, MsgUserConnected, MsgPing, MsgError, MsgShutdown, MsgGameCounter, MsgUserCounter, MsgStreams, MsgSpotlights, Seek, CreateMode } from './lobbyType';
 
 export class LobbyController implements IChatController {

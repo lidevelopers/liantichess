@@ -539,36 +539,6 @@ msgstr "Как Шахматы Капабланки, но с другой нач�
 msgid "Gothic with Crazyhouse drop rules."
 msgstr "Готические шахматы с правилами выставления фигур как в Крейзихаус."
 
-#: ../client/chess.ts:849 ../client/lobby/layer1.ts:51
-#: ../client/lobby/layer2chess.ts:18
-msgid "Chess Variants"
-msgstr "Варианты Шахмат"
-
-#: ../client/chess.ts:850 ../client/lobby/layer1.ts:75
-#: ../client/lobby/layer2makruk.ts:16
-msgid "Makruk Variants"
-msgstr "Варианты Макрука"
-
-#: ../client/chess.ts:851 ../client/lobby/layer1.ts:83
-#: ../client/lobby/layer2shogi.ts:17
-msgid "Shogi Variants"
-msgstr "Варианты Сёги"
-
-#: ../client/chess.ts:852 ../client/lobby/layer1.ts:91
-#: ../client/lobby/layer2xiangqi.ts:16
-msgid "Xiangqi Variants"
-msgstr "Варианты Сянци"
-
-#: ../client/chess.ts:853 ../client/lobby/layer1.ts:59
-#: ../client/lobby/layer2fairy.ts:16
-msgid "Fairy Piece Variants"
-msgstr "Варианты со сказочными фигурами"
-
-#: ../client/chess.ts:854 ../client/lobby/layer1.ts:67
-#: ../client/lobby/layer2army.ts:16
-msgid "New Army Variants"
-msgstr "Варианты новых армий"
-
 #: ../client/datetime.ts:20
 msgid "in %1 year"
 msgid_plural "in %1 years"

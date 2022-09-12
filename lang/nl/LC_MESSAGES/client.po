@@ -455,36 +455,6 @@ msgstr ""
 msgid "Gothic with Crazyhouse drop rules."
 msgstr ""
 
-#: ../client/chess.ts:773 ../client/lobby/layer1.ts:54
-#: ../client/lobby/layer2chess.ts:18
-msgid "Chess Variants"
-msgstr ""
-
-#: ../client/chess.ts:774 ../client/lobby/layer1.ts:78
-#: ../client/lobby/layer2makruk.ts:16
-msgid "Makruk Variants"
-msgstr ""
-
-#: ../client/chess.ts:775 ../client/lobby/layer1.ts:86
-#: ../client/lobby/layer2shogi.ts:17
-msgid "Shogi Variants"
-msgstr ""
-
-#: ../client/chess.ts:776 ../client/lobby/layer1.ts:94
-#: ../client/lobby/layer2xiangqi.ts:16
-msgid "Xiangqi Variants"
-msgstr ""
-
-#: ../client/chess.ts:777 ../client/lobby/layer1.ts:62
-#: ../client/lobby/layer2fairy.ts:16
-msgid "Fairy Piece Variants"
-msgstr ""
-
-#: ../client/chess.ts:778 ../client/lobby/layer1.ts:70
-#: ../client/lobby/layer2army.ts:16
-msgid "New Army Variants"
-msgstr ""
-
 #: ../client/datetime.ts:32
 msgid "in %1 year"
 msgid_plural "in %1 years"

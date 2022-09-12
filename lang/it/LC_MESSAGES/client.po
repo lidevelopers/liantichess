@@ -537,36 +537,6 @@ msgstr "Come gli Scacchi Capablanca ma con una posizione iniziale differente."
 msgid "Gothic with Crazyhouse drop rules."
 msgstr "Scacchi gotici con regole di paracadutaggio Crazyhouse."
 
-#: ../client/chess.ts:849 ../client/lobby/layer1.ts:51
-#: ../client/lobby/layer2chess.ts:18
-msgid "Chess Variants"
-msgstr "Varianti degli scacchi"
-
-#: ../client/chess.ts:850 ../client/lobby/layer1.ts:75
-#: ../client/lobby/layer2makruk.ts:16
-msgid "Makruk Variants"
-msgstr "Varianti del Makruk"
-
-#: ../client/chess.ts:851 ../client/lobby/layer1.ts:83
-#: ../client/lobby/layer2shogi.ts:17
-msgid "Shogi Variants"
-msgstr "Varianti dello shogi"
-
-#: ../client/chess.ts:852 ../client/lobby/layer1.ts:91
-#: ../client/lobby/layer2xiangqi.ts:16
-msgid "Xiangqi Variants"
-msgstr "Varianti dello Xiangqi"
-
-#: ../client/chess.ts:853 ../client/lobby/layer1.ts:59
-#: ../client/lobby/layer2fairy.ts:16
-msgid "Fairy Piece Variants"
-msgstr "Varianti con pezzi eterodossi"
-
-#: ../client/chess.ts:854 ../client/lobby/layer1.ts:67
-#: ../client/lobby/layer2army.ts:16
-msgid "New Army Variants"
-msgstr "Varianti con nuovi schieramenti"
-
 #: ../client/datetime.ts:20
 msgid "in %1 year"
 msgid_plural "in %1 years"

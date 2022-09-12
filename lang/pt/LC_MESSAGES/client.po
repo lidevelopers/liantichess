@@ -523,36 +523,6 @@ msgstr "Semelhante ao Xadrez Capablanca mas com posição inicial diferente."
 msgid "Gothic with Crazyhouse drop rules."
 msgstr "Xadrez Gótico com regras de Crazyhouse"
 
-#: ../client/chess.ts:773 ../client/lobby/layer1.ts:54
-#: ../client/lobby/layer2chess.ts:18
-msgid "Chess Variants"
-msgstr "Variantes de Xadrez"
-
-#: ../client/chess.ts:774 ../client/lobby/layer1.ts:78
-#: ../client/lobby/layer2makruk.ts:16
-msgid "Makruk Variants"
-msgstr "Variantes de Makruk"
-
-#: ../client/chess.ts:775 ../client/lobby/layer1.ts:86
-#: ../client/lobby/layer2shogi.ts:17
-msgid "Shogi Variants"
-msgstr "Variantes de Shogi"
-
-#: ../client/chess.ts:776 ../client/lobby/layer1.ts:94
-#: ../client/lobby/layer2xiangqi.ts:16
-msgid "Xiangqi Variants"
-msgstr "Variantes de Xiangqi"
-
-#: ../client/chess.ts:777 ../client/lobby/layer1.ts:62
-#: ../client/lobby/layer2fairy.ts:16
-msgid "Fairy Piece Variants"
-msgstr "Variantes com peças não ortodoxas"
-
-#: ../client/chess.ts:778 ../client/lobby/layer1.ts:70
-#: ../client/lobby/layer2army.ts:16
-msgid "New Army Variants"
-msgstr "Variantes com Novos Exércitos"
-
 #: ../client/datetime.ts:32
 msgid "in %1 year"
 msgid_plural "in %1 years"
