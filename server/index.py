@@ -24,6 +24,7 @@ from const import (
     VARIANTS,
     VARIANT_ICONS,
     VARIANT_GROUPS,
+    TROPHY_KIND,
     RATED,
     IMPORTED,
     variant_display_name,
@@ -396,7 +397,7 @@ async def index(request):
             if profileId in CUSTOM_TROPHY_OWNERS:
                 trophies = CUSTOM_TROPHY_OWNERS[profileId]
                 for v, kind in trophies:
-                    if v in VARIANTS:
+                    if v in TROPHY_KIND:
                         render["trophies"].append((v, kind))
 
         render["title"] = "Profile • " + profileId

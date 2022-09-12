@@ -81,17 +81,26 @@ CONSERVATIVE_CAPA_FEN = "arnbqkbnrc/pppppppppp/10/10/10/10/PPPPPPPPPP/ARNBQKBNRC
 
 VARIANTS = (
     "antichess",
+    "antichess960",
     "losers",
+    "losers960",
     "anti_antichess",
+    "anti_antichess960",
     "antiatomic",
+    "antiatomic960",
     "antihouse",
+    "antihouse960",
     "antipawns",
     "coffee_3check",
+    "coffee_3check960",
     "coffeerace",
     "coffeehouse",
+    "coffeehouse960",
     "coffeehill",
+    "coffeehill960",
     "antiplacement",
     "atomic_giveaway_hill",
+    "atomic_giveaway_hill960",
 )
 
 VARIANT_ICONS = {
