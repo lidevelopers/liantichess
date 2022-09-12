@@ -537,9 +537,7 @@ async def index(request):
         render["icons"] = VARIANT_ICONS
         render["groups"] = VARIANT_GROUPS
 
-        render["variant"] = (
-            "docs/" + (variant) + "%s.html" % locale
-        )
+        render["variant"] = "docs/" + (variant) + "%s.html" % locale
 
     elif view == "videos":
         tag = request.rel_url.query.get("tags")
