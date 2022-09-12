@@ -16,7 +16,7 @@ Liantichess' design is heavily influenced by Lichess and is meant to be comforta
 
 <details><summary>What is Fairy-Stockfish?</summary>
 
-Stockfish is one of the premier engines designed to play chess. [Fairy-Stockfish](https://github.com/ianfab/Fairy-Stockfish) is a fork of that created by [Ianfab](https://www.github.com/ianfab) to handle multiple chess variants.</details>
+Stockfish is one of the premier engines designed to play chess. [Fairy-Stockfish](https://github.com/ianfab/Fairy-Stockfish) is a fork of that created by [Ianfab](https://www.github.com/ianfab) to handle multiple antichess variants.</details>
 
 <details><summary>Is level 8 Stockfish the strongest available?</summary>
 

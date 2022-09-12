@@ -98,7 +98,7 @@ export class LobbyController implements IChatController {
         patch(document.getElementById('seekbuttons') as HTMLElement, h('div#seekbuttons', this.renderSeekButtons()));
         patch(document.getElementById('lobbychat') as HTMLElement, chatView(this, "lobbychat"));
 
-        patch(document.getElementById('variants-catalog') as HTMLElement, variantPanels(this));
+//        patch(document.getElementById('variants-catalog') as HTMLElement, variantPanels(this));
 
         this.streams = document.getElementById('streams') as HTMLElement;
 
@@ -876,7 +876,7 @@ export function lobbyView(model: PyChessModel): VNode[] {
                 h('div#seeks-wrapper', h('table#seeks', { hook: { insert: vnode => runSeeks(vnode, model) } })),
             ]),
         ]),
-        h('div#variants-catalog'),
+//        h('div#variants-catalog'),
         h('aside.sidebar-second', [ h('div#seekbuttons') ]),
         h('under-left', [
             h('a.reflist', { attrs: { href: 'https://discord.gg/5qvjPQstKS', rel: "noopener", target: "_blank" } }, 'Discord'),

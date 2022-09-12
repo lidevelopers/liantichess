@@ -360,7 +360,7 @@ async def shutdown(app):
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Liantichess chess variants server")
+    parser = argparse.ArgumentParser(description="Liantichess Antichess variants server")
     parser.add_argument(
         "-v",
         action="store_true",

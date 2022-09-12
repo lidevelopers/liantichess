@@ -12,7 +12,7 @@
     </ul>
 </aside>
 <div class="videos">
-    <div class="box-top"><h1>Chess variant videos</h1></div>
+    <div class="box-top"><h1>Antichess variant videos</h1></div>
     <div class="video">
     {%- for video in videos -%}
     <a class="card" href="{{ home }}/video/{{ video['_id'] }}"><span class="duration">{{ video['duration'] }}</span><figure style="background-image: url(https://img.youtube.com/vi/{{ video['_id'] }}/0.jpg)"></figure><span class="info"><span class="title">{{ video['title'] }}</span></span><span class="reveal"><span class="full-title">{{ video['title'] }}</span><span class="author">{{ video['author'] }}</span><span class="target">{{ video['target'] }}</span><span class="tags">{% for vtag in video['tags'] %}<span class="vtag">🏷 {{ vtag }}</span>{% endfor %}</span></span></a>
