@@ -16,7 +16,7 @@ export function aboutView(model: PyChessModel): VNode[] {
             h('p', [
                 // TODO Automate the generation of this list
                 _("All supported games on Liantichess can be found "),
-                h('a', { attrs: { href: 'https://liantichess.herokuapp.com/variants' } }, 'here'),
+                h('a', { attrs: { href: 'https://liantichess.herokuapp.com/variants/antichess' } }, 'here'),
                 ".",
             ]),
             h('p', [

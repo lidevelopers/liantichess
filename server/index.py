@@ -153,7 +153,7 @@ async def index(request):
         view = "stats"
     elif request.path.startswith("/news"):
         view = "news"
-    elif request.path.startswith("/variants"):
+    elif request.path.startswith("/variants/antichess"):
         view = "variants"
     elif request.path.startswith("/video"):
         videoId = request.match_info.get("videoId")

@@ -7,7 +7,7 @@
 
 li[chess ]antichess is a free, open-source antichess server derived from [pychess-variants](https://github.com/gbtami/pychess-variants).
 
-All supported games on Liantichess can be found [here](https://liantichess.herokuapp.com/variants).
+All supported games on Liantichess can be found [here](https://liantichess.herokuapp.com/variants/antichess).
 
 For move generation, validation, analysis and engine play it uses
 - [Fairy-Stockfish](https://github.com/ianfab/Fairy-Stockfish)

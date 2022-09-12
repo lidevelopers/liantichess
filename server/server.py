@@ -71,7 +71,7 @@ async def on_prepare(request, response):
         response.headers["Content-Encoding"] = "br"
         return
     elif (
-        request.path.startswith("/variants")
+        request.path.startswith("/variants/antichess")
         or request.path.startswith("/news")
         or request.path.startswith("/video")
     ):

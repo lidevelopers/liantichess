@@ -86,7 +86,6 @@ get_routes = (
     ("/patron/thanks", index),
     ("/news", index),
     ("/news/{news_item}", index),
-    ("/variants", index),
     ("/variants/{variant}", index),
     ("/video", index),
     ("/video/{videoId}", index),
