@@ -27,9 +27,9 @@ from const import (
     TROPHY_KIND,
     RATED,
     IMPORTED,
-    variant_display_name,
-    pairing_system_name,
     T_CREATED,
+    TRANSLATED_VARIANT_NAMES,
+    TRANSLATED_PAIRING_SYSTEM_NAMES,
 )
 from fairy import FairyBoard
 from glicko2.glicko2 import DEFAULT_PERF, PROVISIONAL_PHI
@@ -139,6 +139,15 @@ async def index(request):
     if lang not in LANGUAGES:
         lang = "en"
     get_template = request.app["jinja"][lang].get_template
+
+    lang_translation = request.app["gettext"][lang]
+    lang_translation.install()
+
+    def variant_display_name(variant):
+        return lang_translation.gettext(TRANSLATED_VARIANT_NAMES[variant])
+
+    def pairing_system_name(system):
+        return lang_translation.gettext(TRANSLATED_PAIRING_SYSTEM_NAMES[system])
 
     view = "lobby"
     gameId = request.match_info.get("gameId")
@@ -461,7 +470,7 @@ async def index(request):
         render["icons"] = VARIANT_ICONS
         render["pairing_system_name"] = pairing_system_name
         render["time_control_str"] = time_control_str
-        render["tables"] = await get_latest_tournaments(request.app)
+        render["tables"] = await get_latest_tournaments(request.app, lang_translation)
         render["admin"] = user.username in ADMINS
 
     if (gameId is not None) and gameId != "variants":
@@ -508,7 +517,11 @@ async def index(request):
 
     if tournamentId is not None:
         render["tournamentid"] = tournamentId
-        render["tournamentname"] = tournament.name
+        render["tournamentname"] = (
+            tournament.translated_name(lang_translation)
+            if tournament.frequency
+            else tournament.name
+        )
         render["description"] = tournament.description
         render["variant"] = tournament.variant
         render["chess960"] = tournament.chess960
