@@ -47,7 +47,7 @@ from settings import (
 from generate_highscore import generate_highscore
 from misc import time_control_str
 from news import NEWS
-from videos import VIDEO_TAGS
+from videos import VIDEO_TAGS, VIDEO_TARGETS
 from user import User
 from utils import load_game, join_seek, tv_game, tv_game_user
 from tournaments import (
@@ -148,6 +148,12 @@ async def index(request):
 
     def pairing_system_name(system):
         return lang_translation.gettext(TRANSLATED_PAIRING_SYSTEM_NAMES[system])
+
+    def video_tag(tag):
+        return lang_translation.gettext(VIDEO_TAGS[tag])
+
+    def video_target(target):
+        return lang_translation.gettext(VIDEO_TARGETS[target])
 
     view = "lobby"
     gameId = request.match_info.get("gameId")
@@ -315,9 +321,6 @@ async def index(request):
 
             if user.username not in (game.wplayer.username, game.bplayer.username):
                 game.spectators.add(user)
-
-            if game.tournamentId is not None:
-                tournament_name = await get_tournament_name(request.app, game.tournamentId)
 
     if view in ("profile", "level8win"):
         if (profileId in users) and not users[profileId].enabled:
@@ -510,18 +513,16 @@ async def index(request):
             render["ct"] = json.dumps(game.crosstable)
             render["board"] = json.dumps(game.get_board(full=True))
             if game.tournamentId is not None:
+                tournament_name = await get_tournament_name(request, game.tournamentId)
                 render["tournamentid"] = game.tournamentId
                 render["tournamentname"] = tournament_name
                 render["wberserk"] = game.wberserk
                 render["bberserk"] = game.bberserk
 
     if tournamentId is not None:
+        tournament_name = await get_tournament_name(request, tournamentId)
         render["tournamentid"] = tournamentId
-        render["tournamentname"] = (
-            tournament.translated_name(lang_translation)
-            if tournament.frequency
-            else tournament.name
-        )
+        render["tournamentname"] = tournament_name
         render["description"] = tournament.description
         render["variant"] = tournament.variant
         render["chess960"] = tournament.chess960
@@ -565,6 +566,8 @@ async def index(request):
             videos.append(doc)
         render["videos"] = videos
         render["tags"] = VIDEO_TAGS
+        render["video_tag"] = video_tag
+        render["video_target"] = video_target
 
     elif view == "video":
         render["view_css"] = "videos.css"
@@ -599,6 +602,7 @@ async def index(request):
     try:
         text = await template.render_async(render)
     except Exception:
+        log.exception("ERROR: template.render_async() failed.")
         return web.HTTPFound("/")
 
     response = web.Response(text=html_minify(text), content_type="text/html")
@@ -625,6 +629,11 @@ async def select_lang(request):
     if lang is not None:
         referer = request.headers.get("REFERER")
         session = await aiohttp_session.get_session(request)
+        session_user = session.get("user_name")
+        users = request.app["users"]
+        if session_user in users:
+            user = users[session_user]
+            user.lang = lang
         session["lang"] = lang
         return web.HTTPFound(referer)
     else:

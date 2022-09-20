@@ -1,23 +1,37 @@
 # TODO: make videos page paginated
 
-VIDEO_TAGS = (
-    "Howto",
-    "Introduction",
-    "Opening",
-    "Middlegame",
-    "Endgame",
-    "Fundamentals",
-    "Tactics",
-    "Puzzle",
-    "Janggi",
-    "Xiangqi",
-    "Makruk",
-    "Shogi",
-    "S-Chess",
-    "Match",
-    "Tournament",
-    "Hu Ronghua",
-)
+#  Deferred translations!
+def _(message):
+    return message
+
+
+VIDEO_TAGS = {
+    "Howto": _("Howto"),
+    "Introduction": _("Introduction"),
+    "Opening": _("Opening"),
+    "Middlegame": _("Middlegame"),
+    "Endgame": _("Endgame"),
+    "Fundamentals": _("Fundamentals"),
+    "Tactics": _("Tactics"),
+    "Puzzle": _("Puzzle"),
+    "Janggi": _("Janggi"),
+    "Xiangqi": _("Xiangqi"),
+    "Makruk": _("Makruk"),
+    "Shogi": _("Shogi"),
+    "S-Chess": _("S-Chess"),
+    "Placement": _("Placement"),
+    "Match": _("Match"),
+    "Tournament": _("Tournament"),
+    "Hu Ronghua": _("Hu Ronghua"),
+}
+
+VIDEO_TARGETS = {
+    "beginner": _("beginner"),
+    "intermediate": _("intermediate"),
+    "advanced": _("advanced"),
+}
+
+del _
 
 VIDEOS = [
     {
@@ -307,5 +321,21 @@ VIDEOS = [
         "tags": ["Xiangqi", "Hu Ronghua"],
         "target": "beginner",
         "duration": "25:31",
+    },
+    {
+        "_id": "-1jXt-QbuEA",
+        "title": "A Concept in Xiangqi Opening",
+        "author": "Singapore Xiangqi Academy",
+        "tags": ["Xiangqi", "Opening"],
+        "target": "beginner",
+        "duration": "9:08",
+    },
+    {
+        "_id": "IFKSuw2rthE",
+        "title": "Janggi - Mate in 3 (or 2) Puzzles",
+        "author": "Amphibian Hoplite",
+        "tags": ["Janggi", "Puzzle"],
+        "target": "beginner",
+        "duration": "10:01",
     },
 ]
