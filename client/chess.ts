@@ -316,6 +316,24 @@ export const VARIANTS: { [name: string]: Variant } = {
         chess960: true, icon: "~", icon960: "\\",
     }),
 
+    antichess: new Variant({
+        name: "antichess", tooltip: () => _("capture all pieces."),
+        startFen: "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w - - 0 1",
+        board: "standard8x8", piece: "standard",
+        pieceLetters: ["k", "q", "r", "b", "n", "p"],
+        enPassant: true,
+        chess960: true, icon: "♔", icon960: "♔",
+    }), 
+    
+    losers: new Variant({
+        name: "losers", tooltip: () => _("Losers chess."),
+        startFen: "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+        board: "standard8x8", piece: "standard",
+        pieceLetters: ["k", "q", "r", "b", "n", "p"],
+        enPassant: true,
+        chess960: true, icon: "♔", icon960: "♔",
+    }), 
+
     makruk: new Variant({
         name: "makruk", tooltip: () => _("Thai Chess. A game closely resembling the original Chaturanga. Similar to Chess but with a different queen and bishop."),
         startFen: "rnsmksnr/8/pppppppp/8/8/PPPPPPPP/8/RNSKMSNR w - - 0 1",
@@ -786,22 +804,22 @@ const disabledVariants = [ "gothic", "gothhouse", "embassy", "gorogoro" ];
 export const enabledVariants = variants.filter(v => !disabledVariants.includes(v));
 
 const variantGroups: { [ key: string ]: { variants: string[] } } = {
-    standard: { variants: [ "chess", "crazyhouse", "placement", "atomic" ] },
-    sea:      { variants: [ "makruk", "makpong", "cambodian", "sittuyin", "asean" ] },
-    shogi:    { variants: [ "shogi", "minishogi", "kyotoshogi", "dobutsu", "gorogoroplus", "torishogi" ] },
-    xiangqi:  { variants: [ "xiangqi", "manchu", "janggi", "minixiangqi" ] },
-    fairy:    { variants: [ "capablanca", "capahouse", "seirawan", "shouse", "grand", "grandhouse", "shako", "shogun", "hoppelpoppel" ] },
-    army:     { variants: [ "orda", "synochess", "shinobi", "empire", "ordamirror", "chak", "chennis" ] },
+    standard: { variants: [ "antichess", "losers"] },
+    //sea:      { variants: [ "makruk", "makpong", "cambodian", "sittuyin", "asean" ] },
+    //shogi:    { variants: [ "shogi", "minishogi", "kyotoshogi", "dobutsu", "gorogoroplus", "torishogi" ] },
+    //xiangqi:  { variants: [ "xiangqi", "manchu", "janggi", "minixiangqi" ] },
+    //fairy:    { variants: [ "capablanca", "capahouse", "seirawan", "shouse", "grand", "grandhouse", "shako", "shogun", "hoppelpoppel" ] },
+    //army:     { variants: [ "orda", "synochess", "shinobi", "empire", "ordamirror", "chak", "chennis" ] },
 };
 
 function variantGroupLabel(group: string): string {
     const groups: {[index: string]: string} = {
         standard: _("Chess Variants"),
-        sea: _("Makruk Variants"),
-        shogi: _("Shogi Variants"),
-        xiangqi: _("Xiangqi Variants"),
-        fairy: _("Fairy Piece Variants"),
-        army: _("New Army Variants"),
+        //sea: _("Makruk Variants"),
+        //shogi: _("Shogi Variants"),
+        //xiangqi: _("Xiangqi Variants"),
+        //fairy: _("Fairy Piece Variants"),
+        //army: _("New Army Variants"),
     }
     return groups[group];
 }
