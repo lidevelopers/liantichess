@@ -261,523 +261,116 @@ interface VariantConfig {
 }
 
 export const VARIANTS: { [name: string]: Variant } = {
-    chess: new Variant({
-        name: "chess", tooltip: () => _("Chess, unmodified, as it's played by FIDE standards."),
+    antichess: new Variant({
+        name: "antichess", tooltip: () => _("capture all pieces."),
+        startFen: "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w - - 0 1",
+        board: "standard8x8", piece: "standard",
+        pieceLetters: ["k", "q", "r", "b", "n", "p"],
+        promotionOrder: ["k", "q", "r", "b", "n", "p"],
+        enPassant: true,
+        chess960: true, icon: "♔", icon960: "♔",
+    }),
+
+    losers: new Variant({
+        name: "losers", tooltip: () => _("losers Chess."),
         startFen: "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
         board: "standard8x8", piece: "standard",
         pieceLetters: ["k", "q", "r", "b", "n", "p"],
         enPassant: true,
-        alternateStart: {
-            '': '',
-            'PawnsPushed': "rnbqkbnr/8/8/pppppppp/PPPPPPPP/8/8/RNBQKBNR w KQkq - 0 1",
-            'PawnsPassed': "rnbqkbnr/8/8/PPPPPPPP/pppppppp/8/8/RNBQKBNR w KQkq - 0 1",
-            'UpsideDown': "RNBKQBNR/PPPPPPPP/8/8/8/8/pppppppp/rnbkqbnr w - - 0 1",
-            'Theban': "1p6/2p3kn/3p2pp/4pppp/5ppp/8/PPPPPPPP/PPPPPPKN w - - 0 1",
-            'No castle': 'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w - - 0 1'
-        },
-        chess960: true, icon: "M", icon960: "V",
+        chess960: true, icon: "♔", icon960: "♔",
     }),
 
-    crazyhouse: new Variant({
-        name: "crazyhouse", tooltip: () => _("Take captured pieces and drop them back on to the board as your own."),
-        startFen: "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR[] w KQkq - 0 1",
+    anti_antichess: new Variant({
+        name: "anti_antichess", displayName: "anti-antichess", tooltip: () => _("loose at antichess"),
+        startFen: "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+        board: "standard8x8", piece: "standard",
+        pieceLetters: ["k", "q", "r", "b", "n", "p"],
+        enPassant: true,
+        chess960: true, icon: "♔", icon960: "♔",
+    }),
+
+    antiatomic: new Variant({   
+        name: "antiatomic", tooltip: () => _("Atomic+Antichess"),
+        startFen: "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+        board: "standard8x8", piece: "standard",
+        pieceLetters: ["k", "q", "r", "b", "n", "p"],
+        enPassant: true,
+        chess960: true, icon: "♔", icon960: "♔",
+    }),
+
+    antihouse: new Variant({
+        name: "antihouse", tooltip: () => _("antichess + crazyhouse."),
+        startFen: "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+        board: "standard8x8", piece: "standard",
+        pieceLetters: ["k", "q", "r", "b", "n", "p"],
+        pocketLetters: ["p", "n", "b", "r", "q", "k"],
+        enPassant: true, drop: true,
+        chess960: true, icon: "♔", icon960: "♔",
+    }),
+
+    antipawns: new Variant({
+        name: "antipawns", tooltip: () => _("antichess + horde but diff pawn structure."),
+        startFen: "pppppppp/pppppppp/pppppppp/8/8/PPPPPPPP/PPPPPPPP/PPPPPPPP w - - 0 1",
+        board: "standard8x8", piece: "standard",
+        pieceLetters: ["k", "q", "r", "b", "n", "p"],
+        enPassant: true,
+        icon: "♔",
+    }),
+
+    coffee_3check: new Variant({
+        name: "coffee_3check", displayName: "coffee-3check", tooltip: () => _("Keep three checks."),
+        startFen: "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 3+3 0 1",
+        board: "standard8x8", piece: "standard",
+        pieceLetters: ["k", "q", "r", "b", "n", "p"],
+        enPassant: true,
+        chess960: true, icon: "♔", icon960: "♔",
+    }),
+
+    coffeerace: new Variant({
+        name: "coffeerace", tooltip: () => _("AntiRacingkings."),
+        startFen: "8/8/8/8/8/8/krbnNBRK/qrbnNBRQ w - - 0 1",
+        board: "standard8x8", piece: "standard",
+        pieceLetters: ["k", "q", "r", "b", "n", "p"],
+        enPassant: true,
+        icon: "♔",
+    }),
+
+    coffeehouse: new Variant({
+        name: "coffeehouse", tooltip: () => _("antichess + crazyhouse."),
+        startFen: "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
         board: "standard8x8", piece: "standard",
         pieceLetters: ["k", "q", "r", "b", "n", "p"],
         pocketLetters: ["p", "n", "b", "r", "q"],
         enPassant: true, captureToHand: true,
-        alternateStart: {
-            '': '',
-            'PawnsPushed': "rnbqkbnr/8/8/pppppppp/PPPPPPPP/8/8/RNBQKBNR w - - 0 1",
-            'PawnsPassed': "rnbqkbnr/8/8/PPPPPPPP/pppppppp/8/8/RNBQKBNR w - - 0 1",
-            'UpsideDown': "RNBQKBNR/PPPPPPPP/8/8/8/8/pppppppp/rnbqkbnr w - - 0 1",
-            'Theban': "1p6/2p3kn/3p2pp/4pppp/5ppp/8/PPPPPPPP/PPPPPPKN w - - 0 1",
-            'No castle': 'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w - - 0 1'
-        },
-        chess960: true, icon: "+", icon960: "%",
+        chess960: true, icon: "♔", icon960: "♔",
     }),
 
-    placement: new Variant({
-        name: "placement", tooltip: () => _("Choose where your pieces start."),
+    coffeehill: new Variant({
+        name: "coffeehill", tooltip: () => _("Antichess + koth"),
+        startFen: "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+        board: "standard8x8", piece: "standard",
+        pieceLetters: ["k", "q", "r", "b", "n", "p"],
+        enPassant: true,
+        chess960: true, icon: "♔", icon960: "♔",
+    }),
+
+    antiplacement: new Variant({
+        name: "antiplacement", tooltip: () => _("Choose where your pieces start."),
         startFen: "8/pppppppp/8/8/8/8/PPPPPPPP/8[KQRRBBNNkqrrbbnn] w - - 0 1",
         board: "standard8x8", piece: "standard",
         pieceLetters: ["k", "q", "r", "b", "n", "p"],
         pocketLetters: ["n", "b", "r", "q", "k"],
         enPassant: true,
-        icon: "S",
+        icon: "♔",
     }),
 
-    atomic: new Variant({
-        name: "atomic", tooltip: () => _("Pieces explode upon capture."),
+    atomic_giveaway_hill: new Variant({
+        name: "atomic_giveaway_hill", displayName: "atomic-giveaway-hill", tooltip: () => _("Atomic + Antichess + koth"),
         startFen: "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
         board: "standard8x8", piece: "standard",
         pieceLetters: ["k", "q", "r", "b", "n", "p"],
         enPassant: true,
-        pieceSound: "atomic",
-        chess960: true, icon: "~", icon960: "\\",
-    }),
-
-    makruk: new Variant({
-        name: "makruk", tooltip: () => _("Thai Chess. A game closely resembling the original Chaturanga. Similar to Chess but with a different queen and bishop."),
-        startFen: "rnsmksnr/8/pppppppp/8/8/PPPPPPPP/8/RNSKMSNR w - - 0 1",
-        board: "makruk8x8", piece: "makruk",
-        pieceLetters: ["k", "s", "m", "n", "r", "p", "m~" as cg.Letter],
-        promotionOrder: ["m"],
-        counting: "makruk",
-        showPromoted: true,
-        icon: "Q",
-    }),
-
-    makpong: new Variant({
-        name: "makpong", tooltip: () => _("Makruk variant where kings cannot move to escape out of check."),
-        startFen: "rnsmksnr/8/pppppppp/8/8/PPPPPPPP/8/RNSKMSNR w - - 0 1",
-        board: "makruk8x8", piece: "makruk",
-        pieceLetters: ["k", "s", "m", "n", "r", "p", "m~" as cg.Letter],
-        promotionOrder: ["m"],
-        counting: "makruk",
-        showPromoted: true,
-        icon: "O",
-    }),
-
-    cambodian: new Variant({
-        name: "cambodian", displayName: "ouk chaktrang", tooltip: () => _("Cambodian Chess. Makruk with a few additional opening abilities."),
-        startFen: "rnsmksnr/8/pppppppp/8/8/PPPPPPPP/8/RNSKMSNR w DEde - 0 1",
-        board: "makruk8x8", piece: "makruk",
-        pieceLetters: ["k", "s", "m", "n", "r", "p", "m~" as cg.Letter],
-        promotionOrder: ["m"],
-        counting: "makruk",
-        showPromoted: true,
-        icon: "!",
-    }),
-
-    sittuyin: new Variant({
-        name: "sittuyin", tooltip: () => _("Burmese Chess. Similar to Makruk, but pieces are placed at the start of the match."),
-        startFen: "8/8/4pppp/pppp4/4PPPP/PPPP4/8/8[KFRRSSNNkfrrssnn] w - - 0 1",
-        board: "sittuyin8x8", piece: "sittuyin",
-        firstColor: "Red", secondColor: "Black",
-        pieceLetters: ["k", "f", "s", "n", "r", "p"],
-        pocketLetters: ["r", "n", "s", "f", "k"],
-        promotionOrder: ["f"],
-        counting: "asean",
-        icon: ":",
-    }),
-
-    asean: new Variant({
-        name: "asean", tooltip: () => _("Makruk using the board/pieces from International Chess as well as pawn promotion rules."),
-        startFen: "rnbqkbnr/8/pppppppp/8/8/PPPPPPPP/8/RNBQKBNR w - - 0 1",
-        board: "standard8x8", piece: "asean",
-        pieceLetters: ["k", "q", "b", "n", "r", "p"],
-        promotionOrder: ["r", "n", "b", "q"],
-        counting: "asean",
-        icon: "♻",
-    }),
-
-    shogi: new Variant({
-        name: "shogi", tooltip: () => _("Japanese Chess, and the standard 9x9 version played today with drops and promotions. "),
-        startFen: "lnsgkgsnl/1r5b1/ppppppppp/9/9/9/PPPPPPPPP/1B5R1/LNSGKGSNL[-] w 0 1",
-        board: "shogi9x9", piece: "shogi",
-        firstColor: "Black", secondColor: "White",
-        pieceLetters: ["k", "g", "r", "b", "s", "n", "l", "p"],
-        pocketLetters: ["p", "l", "n", "s", "g", "b", "r"],
-        promotion: "shogi",
-        promoteableLetters: ["p", "l", "n", "s", "r", "b"],
-        isMandatoryPromotion: distanceBased({ p: 1, l: 1, n: 2 }, 9),
-        timeControl: "byoyomi",
-        pieceSound: "shogi",
-        captureToHand: true,
-        alternateStart: {
-            '': '',
-            'Lance HC': 'lnsgkgsn1/1r5b1/ppppppppp/9/9/9/PPPPPPPPP/1B5R1/LNSGKGSNL[-] b 0 1',
-            'Bishop HC': 'lnsgkgsnl/1r7/ppppppppp/9/9/9/PPPPPPPPP/1B5R1/LNSGKGSNL[-] b 0 1',
-            'Rook HC': 'lnsgkgsnl/7b1/ppppppppp/9/9/9/PPPPPPPPP/1B5R1/LNSGKGSNL[-] b 0 1',
-            'Rook+Lance HC': 'lnsgkgsn1/7b1/ppppppppp/9/9/9/PPPPPPPPP/1B5R1/LNSGKGSNL[-] b 0 1',
-            '2-Piece HC': 'lnsgkgsnl/9/ppppppppp/9/9/9/PPPPPPPPP/1B5R1/LNSGKGSNL[-] b 0 1',
-            '4-Piece HC': '1nsgkgsn1/9/ppppppppp/9/9/9/PPPPPPPPP/1B5R1/LNSGKGSNL[-] b 0 1',
-            '6-Piece HC': '2sgkgs2/9/ppppppppp/9/9/9/PPPPPPPPP/1B5R1/LNSGKGSNL[-] b 0 1',
-            '8-Piece HC': '3gkg3/9/ppppppppp/9/9/9/PPPPPPPPP/1B5R1/LNSGKGSNL[-] b 0 1',
-            '9-Piece HC': '3gk4/9/ppppppppp/9/9/9/PPPPPPPPP/1B5R1/LNSGKGSNL[-] b 0 1',
-            '10-Piece HC': '4k4/9/ppppppppp/9/9/9/PPPPPPPPP/1B5R1/LNSGKGSNL[-] b 0 1'
-        },
-        icon: "K",
-    }),
-
-    minishogi: new Variant({
-        name: "minishogi", tooltip: () => _("5x5 Shogi for more compact and faster games. There are no knights or lances."),
-        startFen: "rbsgk/4p/5/P4/KGSBR[-] w 0 1",
-        board: "shogi5x5", piece: "shogi",
-        firstColor: "Black", secondColor: "White",
-        pieceLetters: ["k", "g", "r", "b", "s", "p"],
-        pocketLetters: ["p", "s", "g", "b", "r"],
-        promotion: "shogi",
-        promoteableLetters: ["p", "s", "r", "b"],
-        isMandatoryPromotion: distanceBased({ p: 1 }, 5),
-        timeControl: "byoyomi",
-        pieceSound: "shogi",
-        captureToHand: true,
-        icon: "6",
-    }),
-
-    kyotoshogi: new Variant({
-        name: "kyotoshogi", displayName: "kyoto shogi", tooltip: () => _("A wild Shogi variant on a 5x5 board where pieces flip into a different piece after each move."),
-        startFen: "p+nks+l/5/5/5/+LSK+NP[-] w 0 1",
-        board: "shogi5x5", piece: "kyoto",
-        firstColor: "Black", secondColor: "White",
-        pieceLetters: ["k", "l", "s", "n", "p"],
-        pocketLetters: ["p", "l", "n", "s"],
-        promotion: "kyoto",
-        promoteableLetters: ["p", "l", "n", "s"],
-        isMandatoryPromotion: (_role: cg.Role, orig: cg.Orig, _dest: cg.Key, _color: cg.Color) => util.isKey(orig),
-        timeControl: "byoyomi",
-        pieceSound: "shogi",
-        captureToHand: true,
-        icon: ")",
-    }),
-
-    dobutsu: new Variant({
-        name: "dobutsu", tooltip: () => _("3x4 game with cute animals, designed to teach children how to play Shogi."),
-        startFen: "gle/1c1/1C1/ELG[-] w 0 1",
-        board: "shogi3x4", piece: "dobutsu",
-        firstColor: "Black", secondColor: "White",
-        pieceLetters: ["l", "g", "e", "c"],
-        pocketLetters: ["e", "g", "c"],
-        kingLetters: ["l"],
-        promotion: "shogi",
-        promoteableLetters: ["c"],
-        timeControl: "byoyomi",
-        pieceSound: "shogi",
-        captureToHand: true,
-        icon: "8",
-    }),
-
-    gorogoro: new Variant({
-        name: "gorogoro", tooltip: () => _("5x6 Shogi designed to introduce tactics with the generals."),
-        startFen: "sgkgs/5/1ppp1/1PPP1/5/SGKGS[-] w 0 1",
-        board: "shogi5x6", piece: "shogi",
-        firstColor: "Black", secondColor: "White",
-        pieceLetters: ["k", "g", "s", "p"],
-        pocketLetters: ["p", "s", "g"],
-        promotion: "shogi",
-        promoteableLetters: ["p", "s"],
-        isMandatoryPromotion: distanceBased({ p: 1 }, 6),
-        timeControl: "byoyomi",
-        pieceSound: "shogi",
-        captureToHand: true,
-        icon: "🐱",
-    }),
-
-    gorogoroplus: new Variant({
-        name: "gorogoroplus", displayName: "gorogoro+", tooltip: () => _("5x6 Shogi designed to introduce tactics with the generals."),
-        startFen: "sgkgs/5/1ppp1/1PPP1/5/SGKGS[LNln] w 0 1",
-        board: "shogi5x6", piece: "shogi",
-        firstColor: "Black", secondColor: "White",
-        pieceLetters: ["k", "g", "s", "n", "l", "p"],
-        pocketLetters: ["p", "l", "n", "s", "g"],
-        promotion: "shogi",
-        promoteableLetters: ["p", "s", "n", "l"],
-        isMandatoryPromotion: distanceBased({ p: 1, l: 1, n: 2 }, 6),
-        timeControl: "byoyomi",
-        pieceSound: "shogi",
-        captureToHand: true,
-        alternateStart: {
-            'Gorogoro Plus N+L': '',
-            'Original (No N+L)': 'sgkgs/5/1ppp1/1PPP1/5/SGKGS[-] w 0 1'
-        },
-        icon: "🐱",
-    }),
-
-    torishogi: new Variant({
-        name: "torishogi", displayName: "tori shogi", tooltip: () => _("A confrontational 7x7 variant with unique pieces each named after different birds."),
-        startFen: "rpckcpl/3f3/sssssss/2s1S2/SSSSSSS/3F3/LPCKCPR[-] w 0 1",
-        board: "shogi7x7", piece: "tori",
-        firstColor: "Black", secondColor: "White",
-        pieceLetters: ["k", "c", "p", "l", "r", "f", "s"],
-        pocketLetters: ["s", "p", "l", "r", "c", "f"],
-        promotion: "shogi",
-        promoteableLetters: ["s", "f"],
-        timeControl: "byoyomi",
-        pieceSound: "shogi",
-        captureToHand: true,
-        alternateStart: {
-            '': '',
-            'Left Quail HC': 'rpckcp1/3f3/sssssss/2s1S2/SSSSSSS/3F3/LPCKCPR[] b 0 1',
-            'Falcon HC': 'rpckcpl/7/sssssss/2s1S2/SSSSSSS/3F3/LPCKCPR[] b 0 1',
-            'Falcon + Left Quail HC': 'rpckcp1/7/sssssss/2s1S2/SSSSSSS/3F3/LPCKCPR[] b 0 1',
-            'Falcon + Both Quails HC': '1pckcp1/7/sssssss/2s1S2/SSSSSSS/3F3/LPCKCPR[] b 0 1',
-        },
-        icon: "🐦",
-    }),
-
-    xiangqi: new Variant({
-        name: "xiangqi", tooltip: () => _("Chinese Chess, one of the oldest and most played board games in the world."),
-        startFen: "rnbakabnr/9/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/1C5C1/9/RNBAKABNR w - - 0 1",
-        board: "xiangqi9x10", piece: "xiangqi",
-        firstColor: "Red", secondColor: "Black",
-        pieceLetters: ["k", "a", "c", "r", "b", "n", "p"],
-        promoteableLetters: [],
-        icon: "|",
-    }),
-
-    manchu: new Variant({
-        name: "manchu", tooltip: () => _("Xiangqi variant where one side has a chariot that can also move as a cannon or horse."),
-        startFen: "rnbakabnr/9/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/9/9/M1BAKAB2 w - - 0 1",
-        board: "xiangqi9x10", piece: "xiangqi",
-        firstColor: "Red", secondColor: "Black",
-        pieceLetters: ["k", "a", "m", "b", "p"],
-        pieceLetters2: ["k", "a", "c", "r", "b", "n", "p"],
-        promoteableLetters: [],
-        icon: "{",
-    }),
-
-    janggi: new Variant({
-        name: "janggi", tooltip: () => _("Korean Chess, similar to Xiangqi but plays much differently. Tournament rules are used."),
-        startFen: "rnba1abnr/4k4/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/1C5C1/4K4/RNBA1ABNR w - - 0 1",
-        board: "janggi9x10", piece: "janggi",
-        firstColor: "Blue", secondColor: "Red",
-        pieceLetters: ["k", "a", "c", "r", "b", "n", "p"],
-        promoteableLetters: [],
-        timeControl: "byoyomi",
-        materialPoint: "janggi",
-        pass: true, setup: true,
-        icon: "=",
-    }),
-
-    minixiangqi: new Variant({
-        name: "minixiangqi", tooltip: () => _("Compact version of Xiangqi played on a 7x7 board without a river."),
-        startFen: "rcnkncr/p1ppp1p/7/7/7/P1PPP1P/RCNKNCR w - - 0 1",
-        board: "xiangqi7x7", piece: "xiangqi",
-        firstColor: "Red", secondColor: "Black",
-        pieceLetters: ["k", "c", "r", "n", "p"],
-        promoteableLetters: [],
-        icon: "7",
-    }),
-
-    capablanca: new Variant({
-        name: "capablanca", tooltip: () => _("Play with the hybrid pieces, archbishop (B+N) and chancellor (R+N), on a 10x8 board."),
-        startFen: "rnabqkbcnr/pppppppppp/10/10/10/10/PPPPPPPPPP/RNABQKBCNR w KQkq - 0 1",
-        board: "standard10x8", piece: "capa",
-        pieceLetters: ["k", "q", "c", "a", "r", "b", "n", "p"],
-        enPassant: true,
-        alternateStart: {
-            '': '',
-            'Bird': 'rnbcqkabnr/pppppppppp/10/10/10/10/PPPPPPPPPP/RNBCQKABNR w KQkq - 0 1',
-            'Carrera': 'rcnbqkbnar/pppppppppp/10/10/10/10/PPPPPPPPPP/RCNBQKBNAR w KQkq - 0 1',
-            'Conservative': 'arnbqkbnrc/pppppppppp/10/10/10/10/PPPPPPPPPP/ARNBQKBNRC w KQkq - 0 1',
-            'Embassy': 'rnbqkcabnr/pppppppppp/10/10/10/10/PPPPPPPPPP/RNBQKCABNR w KQkq - 0 1',
-            'Gothic': 'rnbqckabnr/pppppppppp/10/10/10/10/PPPPPPPPPP/RNBQCKABNR w KQkq - 0 1',
-            'Schoolbook': 'rqnbakbncr/pppppppppp/10/10/10/10/PPPPPPPPPP/RQNBAKBNCR w KQkq - 0 1'
-        },
-        chess960: true, icon: "P", icon960: ",",
-    }),
-
-    capahouse: new Variant({
-        name: "capahouse", tooltip: () => _("Capablanca with Crazyhouse drop rules."),
-        startFen: "rnabqkbcnr/pppppppppp/10/10/10/10/PPPPPPPPPP/RNABQKBCNR[] w KQkq - 0 1",
-        board: "standard10x8", piece: "capa",
-        pieceLetters: ["k", "q", "c", "a", "r", "b", "n", "p"],
-        pocketLetters: ["p", "n", "b", "r", "a", "c", "q"],
-        enPassant: true, captureToHand: true,
-        alternateStart: {
-            '': '',
-            'Bird': 'rnbcqkabnr/pppppppppp/10/10/10/10/PPPPPPPPPP/RNBCQKABNR w KQkq - 0 1',
-            'Carrera': 'rcnbqkbnar/pppppppppp/10/10/10/10/PPPPPPPPPP/RCNBQKBNAR w KQkq - 0 1',
-            'Gothic': 'rnbqckabnr/pppppppppp/10/10/10/10/PPPPPPPPPP/RNBQCKABNR w KQkq - 0 1',
-            'Embassy': 'rnbqkcabnr/pppppppppp/10/10/10/10/PPPPPPPPPP/RNBQKCABNR w KQkq - 0 1'
-        },
-        chess960: true, icon: "&", icon960: "'",
-    }),
-
-    seirawan: new Variant({
-        name: "seirawan", displayName: "s-chess", tooltip: () => _("Hybrid pieces, the hawk (B+N) and elephant (R+N), can enter the board after moving a back rank piece."),
-        startFen: "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR[HEhe] w KQBCDFGkqbcdfg - 0 1",
-        board: "standard8x8", piece: "seirawan",
-        pieceLetters: ["k", "q", "e", "h", "r", "b", "n", "p"],
-        pocketLetters: ["h", "e"],
-        enPassant: true, gate: true,
-        icon: "L",  chess960: true, icon960: "}",
-    }),
-
-    shouse: new Variant({
-        name: "shouse", displayName: "s-house", tooltip: () => _("S-Chess with Crazyhouse drop rules."),
-        startFen: "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR[HEhe] w KQBCDFGkqbcdfg - 0 1",
-        board: "standard8x8", piece: "seirawan",
-        pieceLetters: ["k", "q", "e", "h", "r", "b", "n", "p"],
-        pocketLetters: ["p", "n", "b", "r", "h", "e", "q"],
-        enPassant: true, captureToHand: true, gate: true,
-        icon: "$",
-    }),
-
-    grand: new Variant({
-        name: "grand", tooltip: () => _("Play with the hybrid pieces, archbishop (B+N) and chancellor (R+N), on a grand 10x10 board."),
-        startFen: "r8r/1nbqkcabn1/pppppppppp/10/10/10/10/PPPPPPPPPP/1NBQKCABN1/R8R w - - 0 1",
-        board: "grand10x10", piece: "capa",
-        pieceLetters: ["k", "q", "c", "a", "r", "b", "n", "p"],
-        isMandatoryPromotion: distanceBased({ p: 1 }, 10),
-        enPassant: true,
-        icon: "(",
-    }),
-
-    grandhouse: new Variant({
-        name: "grandhouse", tooltip: () => _("Grand Chess with Crazyhouse drop rules."),
-        startFen: "r8r/1nbqkcabn1/pppppppppp/10/10/10/10/PPPPPPPPPP/1NBQKCABN1/R8R[] w - - 0 1",
-        board: "grand10x10", piece: "capa",
-        pieceLetters: ["k", "q", "c", "a", "r", "b", "n", "p"],
-        pocketLetters: ["p", "n", "b", "r", "a", "c", "q"],
-        isMandatoryPromotion: distanceBased({ p: 1 }, 10),
-        enPassant: true, captureToHand: true,
-        icon: "*",
-    }),
-
-    shako: new Variant({
-        name: "shako", tooltip: () => _("Introduces the cannon and elephant from Xiangqi into a 10x10 chess board."),
-        startFen: "c8c/ernbqkbnre/pppppppppp/10/10/10/10/PPPPPPPPPP/ERNBQKBNRE/C8C w KQkq - 0 1",
-        board: "standard10x10", piece: "shako",
-        pieceLetters: ["k", "q", "e", "c", "r", "b", "n", "p"],
-        promotionOrder: ["q", "n", "c", "r", "e", "b"],
-        enPassant: true,
-        icon: "9",
-    }),
-
-    shogun: new Variant({
-        name: "shogun", tooltip: () => _("Pieces promote and can be dropped, similar to Shogi."),
-        startFen: "rnb+fkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNB+FKBNR w KQkq - 0 1",
-        board: "shogun8x8", piece: "shogun",
-        pieceLetters: ["k", "f", "r", "b", "n", "p"],
-        pocketLetters: ["p", "n", "b", "r", "f"],
-        promotion: "shogi",
-        promoteableLetters: ["p", "f", "r", "b", "n"],
-        isMandatoryPromotion: distanceBased({ p: 1 }, 8),
-        timeControl: "byoyomi",
-        enPassant: true, captureToHand: true,
-        icon: "-",
-    }),
-
-    hoppelpoppel: new Variant({
-        name: "hoppelpoppel", displayName: "hoppel-poppel", tooltip: () => _("Knights capture as bishops; bishops  capture as knights."),
-        startFen: "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
-        board: "standard8x8", piece: "hoppel",
-        pieceLetters: ["k", "q", "r", "b", "n", "p"],
-        enPassant: true,
-        icon: "`",
-    }),
-
-    orda: new Variant({
-        name: "orda", tooltip: () => _("Asymmetric variant where one army has pieces that move like knights but capture differently."),
-        startFen: "lhaykahl/8/pppppppp/8/8/8/PPPPPPPP/RNBQKBNR w KQ - 0 1",
-        board: "standard8x8", piece: "orda",
-        firstColor: "White", secondColor: "Gold",
-        pieceLetters: ["k", "q", "r", "b", "n", "p", "h"],
-        pieceLetters2: ["k", "y", "l", "a", "h", "p", "q"],
-        promotionOrder: ["q", "h"],
-        enPassant: true,
-        boardMark: 'campmate',
-        icon: "R",
-    }),
-
-    synochess: new Variant({
-        name: "synochess", tooltip: () => _("Asymmetric East vs. West variant which pits the western Chess army against a Xiangqi and Janggi-styled army."),
-        startFen: "rneakenr/8/1c4c1/1ss2ss1/8/8/PPPPPPPP/RNBQKBNR[ss] w KQ - 0 1",
-        board: "standard8x8", piece: "synochess",
-        firstColor: "White", secondColor: "Red",
-        pieceLetters: ["k", "q", "r", "b", "n", "p"],
-        pieceLetters2: ["k", "a", "c", "r", "e", "n", "s"],
-        pocketLetters: [], pocketLetters2: ["s"],
-        boardMark: 'campmate',
-        icon: "_",
-    }),
-
-    shinobi: new Variant({
-        name: "shinobi", tooltip: () => _("Asymmetric variant which pits the western Chess army against a drop-based, Shogi-styled army."),
-        startFen: "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/LH1CK1HL[LHMMDJ] w kq - 0 1",
-        board: "standard8x8", piece: "shinobi",
-        firstColor: "Pink", secondColor: "Black",
-        pieceLetters: ["k", "d", "j", "c", "l", "h", "m", "p"],
-        pieceLetters2: ["k", "q", "r", "b", "n", "p"],
-        pocketLetters: ["l", "h", "m", "d", "j"],
-        pocketLetters2: [],
-        promotion: "shogi",
-        promoteableLetters: ["p", "l", "h", "m"],
-        enPassant: true,
-        boardMark: 'campmate',
-        icon: "🐢",
-    }),
-
-    empire: new Variant({
-        name: "empire", tooltip: () => _("Asymmetric variant where one army has pieces that move like queens but capture as usual."),
-        startFen: "rnbqkbnr/pppppppp/8/8/8/PPPSSPPP/8/TECDKCET w kq - 0 1",
-        board: "standard8x8", piece: "empire",
-        firstColor: "Gold", secondColor: "Black",
-        pieceLetters: ["k", "d", "t", "c", "e", "p", "s", "q"],
-        pieceLetters2: ["k", "q", "r", "b", "n", "p"],
-        enPassant: true,
-        boardMark: 'campmate',
-        icon: "♚",
-    }),
-
-    ordamirror: new Variant({
-        name: "ordamirror", displayName: "orda mirror", tooltip: () => _("Orda Chess variant with two Horde armies. The Falcon replaces the Yurt."),
-        startFen: "lhafkahl/8/pppppppp/8/8/PPPPPPPP/8/LHAFKAHL w - - 0 1",
-        board: "standard8x8", piece: "ordamirror",
-        firstColor: "White", secondColor: "Gold",
-        pieceLetters: ["k", "f", "l", "a", "h", "p"],
-        promotionOrder: ["h", "l", "f", "a"],
-        boardMark: 'campmate',
-        icon: "◩",
-    }),
-
-    chak: new Variant({
-        name: "chak", tooltip: () => _("Mayan chess. Inspired by cultural elements of Mesoamerica."),
-        startFen: "rvsqkjsvr/4o4/p1p1p1p1p/9/9/9/P1P1P1P1P/4O4/RVSJKQSVR w - - 0 1",
-        board: "chak9x9", piece: "chak",
-        firstColor: "White", secondColor: "Green",
-        pieceLetters: ["r", "v", "s", "q", "k", "j", "o", "p"],
-        kingLetters: ["k", "+k"],
-        promotion: "shogi",
-        promoteableLetters: ["p", "k"],
-        icon: "🐬",
-    }),
-
-    chennis: new Variant({
-        name: "chennis", tooltip: () => _("Pieces alternate between two forms with each move."),
-        startFen: "p1m1s1f/1k5/7/7/7/5K1/F1S1M1P[] w - 0 1",
-        board: "chennis7x7", piece: "chennis",
-        pieceLetters: ["k", "p", "m", "s", "f"],
-        pocketLetters: ["p", "m", "s", "f"],
-        promotion: "kyoto",
-        promoteableLetters: ["p", "m", "s", "f"],
-        isMandatoryPromotion: (_role: cg.Role, orig: cg.Orig, _dest: cg.Key, _color: cg.Color) => util.isKey(orig),
-        captureToHand: true,
-        icon: "🎾",
-    }),
-
-    // We support to import/store/analyze some variants
-    // but don't want to add them to leaderboard page
-    embassy: new Variant({
-        name: "embassy", tooltip: () => _("Like Capablanca Chess but with Grand starting setup."),
-        startFen: "rnbqkcabnr/pppppppppp/10/10/10/10/PPPPPPPPPP/RNBQKCABNR w KQkq - 0 1",
-        board: "standard10x8", piece: "capa",
-        pieceLetters: ["k", "q", "c", "a", "r", "b", "n", "p"],
-        pocketLetters: ["p", "n", "b", "r", "a", "c", "q"],
-        enPassant: true,
-        icon: "P",
-    }),
-
-    gothic: new Variant({
-        name: "gothic", tooltip: () => _("Like Capablanca Chess but with a different starting setup."),
-        startFen: "rnbqckabnr/pppppppppp/10/10/10/10/PPPPPPPPPP/RNBQCKABNR w KQkq - 0 1",
-        board: "standard10x8", piece: "capa",
-        pieceLetters: ["k", "q", "c", "a", "r", "b", "n", "p"],
-        pocketLetters: ["p", "n", "b", "r", "a", "c", "q"],
-        enPassant: true,
-        icon: "P",
-    }),
-
-    gothhouse: new Variant({
-        name: "gothhouse", tooltip: () => _("Gothic with Crazyhouse drop rules."),
-        startFen: "rnbqckabnr/pppppppppp/10/10/10/10/PPPPPPPPPP/RNBQCKABNR[] w KQkq - 0 1",
-        board: "standard10x8", piece: "capa",
-        pieceLetters: ["k", "q", "c", "a", "r", "b", "n", "p"],
-        pocketLetters: ["p", "n", "b", "r", "a", "c", "q"],
-        enPassant: true, captureToHand: true,
-        icon: "P",
+        chess960: true, icon: "♔", icon960: "♔",
     }),
 };
 
@@ -786,22 +379,18 @@ const disabledVariants = [ "gothic", "gothhouse", "embassy", "gorogoro" ];
 export const enabledVariants = variants.filter(v => !disabledVariants.includes(v));
 
 const variantGroups: { [ key: string ]: { variants: string[] } } = {
-    standard: { variants: [ "chess", "crazyhouse", "placement", "atomic" ] },
-    sea:      { variants: [ "makruk", "makpong", "cambodian", "sittuyin", "asean" ] },
-    shogi:    { variants: [ "shogi", "minishogi", "kyotoshogi", "dobutsu", "gorogoroplus", "torishogi" ] },
-    xiangqi:  { variants: [ "xiangqi", "manchu", "janggi", "minixiangqi" ] },
-    fairy:    { variants: [ "capablanca", "capahouse", "seirawan", "shouse", "grand", "grandhouse", "shako", "shogun", "hoppelpoppel" ] },
-    army:     { variants: [ "orda", "synochess", "shinobi", "empire", "ordamirror", "chak", "chennis" ] },
+    antichess: { variants: [ "antichess", "losers", "anti_antichess" ] },
+    anti:      { variants: [ "antiatomic", "antihouse", "antipawns" ] },
+    coffee:    { variants: [ "coffee_3check", "coffeerace", "coffeehouse", "coffeehill" ] },
+    misc:      { variants: [ "antiplacement", "atomic_giveaway_hill" ] },
 };
 
 function variantGroupLabel(group: string): string {
     const groups: {[index: string]: string} = {
-        standard: _("Chess Variants"),
-        sea: _("Makruk Variants"),
-        shogi: _("Shogi Variants"),
-        xiangqi: _("Xiangqi Variants"),
-        fairy: _("Fairy Piece Variants"),
-        army: _("New Army Variants"),
+        standard: _("Antichess Core Variants"),
+        anti: _("Antichess based Variants"),
+        coffee: _("Other Variants with some Antichess"),
+        misc: _("Other Antichess Variants"),
     }
     return groups[group];
 }
