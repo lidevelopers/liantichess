@@ -80,8 +80,8 @@ GRANDS = ("xiangqi", "manchu", "grand", "grandhouse", "shako", "janggi")
 CONSERVATIVE_CAPA_FEN = "arnbqkbnrc/pppppppppp/10/10/10/10/PPPPPPPPPP/ARNBQKBNRC w KQkq - 0 1"
 
 VARIANTS = (
-    "chess",
-    "chess960",
+    "antichess",
+    "antichess960",
     "crazyhouse",
     "crazyhouse960",
     "placement",
@@ -137,7 +137,7 @@ VARIANT_ICONS = {
     "shogi": "K",
     "janggi": "=",
     "xiangqi": "|",
-    "chess": "M",
+    "antichess": "M",
     "crazyhouse": "+",
     "placement": "S",
     "capablanca": "P",
@@ -159,7 +159,7 @@ VARIANT_ICONS = {
     "cambodian": "!",
     "shako": "9",
     "minixiangqi": "7",
-    "chess960": "V",
+    "antichess960": "V",
     "capablanca960": ",",
     "capahouse960": "'",
     "crazyhouse960": "%",
@@ -180,7 +180,7 @@ VARIANT_ICONS = {
 }
 
 VARIANT_960_TO_PGN = {
-    "chess": "Chess960",
+    "antichess": "Antichess960",
     "capablanca": "Caparandom",
     "capahouse": "Capahouse960",
     "crazyhouse": "Crazyhouse",  # to let lichess import work
@@ -196,8 +196,8 @@ VARIANT_960_TO_PGN = {
 
 CATEGORIES = {
     "chess": (
-        "chess",
-        "chess960",
+        "antichess",
+        "antichess960",
         "crazyhouse",
         "crazyhouse960",
         "placement",
@@ -294,8 +294,8 @@ TRANSLATED_FREQUENCY_NAMES = {
 }
 
 TRANSLATED_VARIANT_NAMES = {
-    "chess": _("Chess"),
-    "chess960": _("Chess960"),
+    "antichess": _("AntiChess"),
+    "antichess960": _("AntiChess960"),
     "crazyhouse": _("Crazyhouse"),
     "crazyhouse960": _("Crazyhouse960"),
     "placement": _("Placement"),

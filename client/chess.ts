@@ -261,20 +261,20 @@ interface VariantConfig {
 }
 
 export const VARIANTS: { [name: string]: Variant } = {
-    chess: new Variant({
-        name: "chess", tooltip: () => _("Chess, unmodified, as it's played by FIDE standards."),
-        startFen: "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+    antichess: new Variant({
+        name: "antichess", tooltip: () => _("AntiChess, unmodified, as it's played by FIDE standards."),
+        startFen: "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w - - 0 1",
         board: "standard8x8", piece: "standard",
         pieceLetters: ["k", "q", "r", "b", "n", "p"],
         enPassant: true,
-        alternateStart: {
-            '': '',
-            'PawnsPushed': "rnbqkbnr/8/8/pppppppp/PPPPPPPP/8/8/RNBQKBNR w KQkq - 0 1",
-            'PawnsPassed': "rnbqkbnr/8/8/PPPPPPPP/pppppppp/8/8/RNBQKBNR w KQkq - 0 1",
-            'UpsideDown': "RNBKQBNR/PPPPPPPP/8/8/8/8/pppppppp/rnbkqbnr w - - 0 1",
-            'Theban': "1p6/2p3kn/3p2pp/4pppp/5ppp/8/PPPPPPPP/PPPPPPKN w - - 0 1",
-            'No castle': 'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w - - 0 1'
-        },
+        //alternateStart: {
+        //    '': '',
+        //    'PawnsPushed': "rnbqkbnr/8/8/pppppppp/PPPPPPPP/8/8/RNBQKBNR w KQkq - 0 1",
+        //    'PawnsPassed': "rnbqkbnr/8/8/PPPPPPPP/pppppppp/8/8/RNBQKBNR w KQkq - 0 1",
+        //    'UpsideDown': "RNBKQBNR/PPPPPPPP/8/8/8/8/pppppppp/rnbkqbnr w - - 0 1",
+        //    'Theban': "1p6/2p3kn/3p2pp/4pppp/5ppp/8/PPPPPPPP/PPPPPPKN w - - 0 1",
+        //    'No castle': 'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w - - 0 1'
+        // },
         chess960: true, icon: "M", icon960: "V",
     }),
 
@@ -798,7 +798,7 @@ const disabledVariants = [ "gothic", "gothhouse", "embassy", "embassyhouse", "go
 export const enabledVariants = variants.filter(v => !disabledVariants.includes(v));
 
 const variantGroups: { [ key: string ]: { variants: string[] } } = {
-    standard: { variants: [ "chess", "crazyhouse", "placement", "atomic" ] },
+    standard: { variants: [ "antichess", "crazyhouse", "placement", "atomic" ] },
     sea:      { variants: [ "makruk", "makpong", "cambodian", "sittuyin", "asean" ] },
     shogi:    { variants: [ "shogi", "minishogi", "kyotoshogi", "dobutsu", "gorogoroplus", "torishogi" ] },
     xiangqi:  { variants: [ "xiangqi", "manchu", "janggi", "minixiangqi" ] },
@@ -808,7 +808,7 @@ const variantGroups: { [ key: string ]: { variants: string[] } } = {
 
 function variantGroupLabel(group: string): string {
     const groups: {[index: string]: string} = {
-        standard: _("Chess Variants"),
+        standard: _("AntiChess Variants"),
         sea: _("Makruk Variants"),
         shogi: _("Shogi Variants"),
         xiangqi: _("Xiangqi Variants"),
