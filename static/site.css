@@ -1311,7 +1311,7 @@ table#seeks {
 #seeks-table {
   box-shadow: var(--base-shadow);
   background-position: center;
-  background-image: url('images/seek-bg.svg');
+  background-image: url('favicon/favicon.png');
   background-color: var(--bg-seek);
   background-blend-mode: overlay;
   background-size: 100% 100%;
@@ -1326,7 +1326,6 @@ table#seeks {
 #seeks thead {
   background: var(--bg-color2);
 }
-/*
 #santa {
     display: inline-block;
     width: 28px;
@@ -1335,7 +1334,6 @@ table#seeks {
     background-position: center;
     background-image: url('images/Santa_hat.svg');
 }
-*/
 #seeks th,
 #seeks td {
   white-space: nowrap;
