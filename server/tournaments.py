@@ -74,7 +74,6 @@ async def create_or_update_tournament(app, username, form, tournament=None):
         "frequency": frequency,
         "minutes": int(form["minutes"]),
         "fen": form["position"],
-        "description": description,
     }
     if tournament is None:
         tournament = await new_tournament(app, data)
