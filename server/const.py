@@ -196,6 +196,7 @@ VARIANT_ICONS = {
     "asean": "♻",
     "chak": "🐬",
     "chennis": "🎾",
+    "duck": "🦆",
 }
 
 VARIANT_960_TO_PGN = {
@@ -309,6 +310,8 @@ def variant_display_name(variant):
         return "KYOTO SHOGI"
     elif variant == "torishogi":
         return "TORI SHOGI"
+    elif variant == "duck":
+        return "DUCK CHESS"
     else:
         return variant.upper()
 

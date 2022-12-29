@@ -46,6 +46,7 @@ WEEKLY_VARIANTS = (
 
 # Monthly Variant Tournaments need different TC
 TC_MONTHLY_VARIANTS = {v: (3, 2, 0) for v in MONTHLY_VARIANTS}
+TC_MONTHLY_VARIANTS["duck"] = (3, 5, 0)
 
 
 def go_month(orig_date, month=1):
