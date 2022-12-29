@@ -16,24 +16,24 @@ def tournament_spotlights(app):
         if tournament.status == T_STARTED or (
             tournament.status == T_CREATED and tournament.starts_at.date() <= to_date
         ):
-            #if tournament.frequency:
-                #names = {
-                   # lang: app["tourneynames"][lang][
-                        #(
-                           # tournament.variant + ("960" if tournament.chess960 else ""),
-                           # tournament.frequency,
-                           # tournament.system,
-                        #)
-                    #]
-                    #for lang in LANGUAGES
-                #}
-            #else:
-                #names = {"en": tournament.name}
+            if tournament.frequency:
+                names = {
+                    lang: app["tourneynames"][lang][
+                        (
+                            tournament.variant + ("960" if tournament.chess960 else ""),
+                            tournament.frequency,
+                            tournament.system,
+                        )
+                    ]
+                    for lang in LANGUAGES
+                }
+            else:
+                names = {"en": tournament.name}
 
             items.append(
                 {
                     "tid": tournament.id,
-                    #"names": names,
+                    "names": names,
                     "variant": tournament.variant,
                     "chess960": tournament.chess960,
                     "nbPlayers": tournament.nb_players,
