@@ -19,14 +19,7 @@ For managing titles it uses
 
 ##
 
-<<<<<<< HEAD
 liantichess is a free server and it will remain free forever.
-=======
-As you know, pychess-variants is a free server and it will remain free forever. However, maintaining and improving the server costs time and money.
-
-If you like our work and find our server useful, please donate through [patreon](https://www.patreon.com/pychess) or directly through [paypal](https://www.paypal.com/paypalme/gbtami)!!
-Your contribution will be greatly appreciated and help me continue to develop this awesome server.
->>>>>>> 11e958d9a04568bda7765aeb2d0e609ceec0f6e6
 
 ## Installation
 
